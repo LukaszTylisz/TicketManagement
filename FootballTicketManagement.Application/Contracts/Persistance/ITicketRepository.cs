@@ -4,7 +4,7 @@ namespace FootballTicketManagement.Application.Contracts.Persistance;
 
 public interface ITicketRepository : IGenericRepository<Ticket>
 {
-    Task<Ticket> GetLeaveRequestWithDetails(int id);
-    Task<List<Ticket>> GetLeaveRequestsWithDetails();
-    Task<List<Ticket>> GetLeaveRequestsWithDetails(string userId);
+    Task<Ticket> GetTicketWithDetails(int id);
+    Task<List<Ticket>> GetTicketWithDetails();
+    Task<List<Ticket>> GetTicketWithDetails(string userId);
 }
