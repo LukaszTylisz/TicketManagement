@@ -3,25 +3,25 @@ using FootballTicketManagement.Application.Contracts.Persistance;
 using FootballTicketManagement.Application.Exceptions;
 using MediatR;
 
-namespace FootballTicketManagement.Application.Features.TicketAllocation.Queries.GetTitcketAllocationDetails;
+namespace FootballTicketManagement.Application.Features.TicketAllocation.Queries.GetTitcketAllocationsDetails;
 
-public class GetTicketAllocationDetailsHandler : IRequestHandler<GetTicketAllocationDetailsQuery, TicketAllocationDetailsDto>
+public class GetTicketAllocationsDetailsHandler : IRequestHandler<GetTicketAllocationsDetailsQuery, TicketAllocationsDetailsDto>
 {
     private readonly IMapper _mapper;
     private readonly ITicketAllocationRepository _ticketAllocationRepository;
 
-    public GetTicketAllocationDetailsHandler(IMapper mapper, ITicketAllocationRepository ticketAllocationRepository)
+    public GetTicketAllocationsDetailsHandler(IMapper mapper, ITicketAllocationRepository ticketAllocationRepository)
     {
         _mapper = mapper;
         _ticketAllocationRepository = ticketAllocationRepository;
     }
-    public async Task<TicketAllocationDetailsDto> Handle(GetTicketAllocationDetailsQuery request, CancellationToken cancellationToken)
+    public async Task<TicketAllocationsDetailsDto> Handle(GetTicketAllocationsDetailsQuery request, CancellationToken cancellationToken)
     {
         var ticketAllocation = await _ticketAllocationRepository.GetTicketAllocationDetails(request.Id);
 
         _ = ticketAllocation ?? throw new NotFoundException(nameof(ticketAllocation), request.Id);
         
-        var allocation = _mapper.Map<TicketAllocationDetailsDto>(ticketAllocation);
+        var allocation = _mapper.Map<TicketAllocationsDetailsDto>(ticketAllocation);
 
         return allocation;
     }

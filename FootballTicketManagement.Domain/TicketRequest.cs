@@ -2,7 +2,7 @@
 
 namespace FootballTicketManagement.Domain;
 
-public class Ticket : BaseEntity
+public class TicketRequest : BaseEntity
 {
     public DateTime MatchStartDate { get; set; }
     public DateTime MatchEndDate { get; set; }
@@ -11,5 +11,5 @@ public class Ticket : BaseEntity
     public string TicketComments { get; set; }
     public bool Resolved { get; set; }
     public bool Cancelled { get; set; }
-    //public string RequestingClientId { get; set; }
+    public string RequestingClientId { get; set; }
 }

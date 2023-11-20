@@ -1,8 +1,8 @@
 ﻿using FootballTicketManagement.Application.Features.TicketType.Queries.GetAllTickets;
 
-namespace FootballTicketManagement.Application.Features.TicketAllocation.Queries.GetTitcketAllocationDetails;
+namespace FootballTicketManagement.Application.Features.TicketAllocation.Queries.GetTitcketAllocationsDetails;
 
-public class TicketAllocationDetailsDto
+public class TicketAllocationsDetailsDto
 {
     public int Id { get; set; }
     public int NumberOfTickets { get; set; }
