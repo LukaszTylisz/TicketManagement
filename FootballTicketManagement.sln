@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketManagement.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketManagement.Persistence", "FootballTicketManagement.Persistence\FootballTicketManagement.Persistence.csproj", "{690B6CDD-806B-46D2-A44E-8D948DA843A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketManagement.Identity", "FootballTicketManagement.Identity\FootballTicketManagement.Identity.csproj", "{3A4E865A-0EE9-4C87-857D-686D734679CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManagement.Blazor.Ui", "FootballManagement.Blazor.Ui\FootballManagement.Blazor.Ui.csproj", "{FBAFD1DC-C64D-4142-A379-490EA38CC065}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,14 @@ Global
 		{690B6CDD-806B-46D2-A44E-8D948DA843A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{690B6CDD-806B-46D2-A44E-8D948DA843A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{690B6CDD-806B-46D2-A44E-8D948DA843A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBAFD1DC-C64D-4142-A379-490EA38CC065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBAFD1DC-C64D-4142-A379-490EA38CC065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBAFD1DC-C64D-4142-A379-490EA38CC065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBAFD1DC-C64D-4142-A379-490EA38CC065}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21B39E20-E26C-40D7-8904-9FCF5C9045BA} = {A95BB32E-444B-4C25-9A7C-690E4ED5EAC1}
@@ -59,5 +71,7 @@ Global
 		{B1B76DF0-E3FB-4F8D-93E2-1993619076CB} = {0E9753A8-665F-476A-84BB-4671E8DFD84C}
 		{383C2290-BFD5-49DD-BED2-D126980B9DF9} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
 		{690B6CDD-806B-46D2-A44E-8D948DA843A8} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
+		{3A4E865A-0EE9-4C87-857D-686D734679CE} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
+		{FBAFD1DC-C64D-4142-A379-490EA38CC065} = {D26E1D5A-00BB-47AB-879B-0DFD46FAA565}
 	EndGlobalSection
 EndGlobal
