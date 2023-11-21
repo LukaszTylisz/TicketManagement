@@ -6,6 +6,7 @@ public class TicketRequest : BaseEntity
 {
     public DateTime MatchStartDate { get; set; }
     public DateTime MatchEndDate { get; set; }
+    public TicketType? TicketType { get; set; }
     public int TicketTypeId { get; set; }
     public DateTime DateRequested { get; set; }
     public string TicketComments { get; set; }
