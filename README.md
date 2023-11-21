@@ -1,5 +1,5 @@
-## Football Ticket Management
-This is a football ticket sales back office application built with ASP.NET Core 8 Web API and Blazor WebAssembly as the UI and consumer of the API. Using an Onion Architecture with Clean Architecture based on architectural principles, the end goal is to have a testable and maintainable application architecture. 
+## Ticket Management
+This is a ticket sales back office application built with ASP.NET Core 8 Web API and Blazor WebAssembly as the UI and consumer of the API. Using an Onion Architecture with Clean Architecture based on architectural principles, the end goal is to have a testable and maintainable application architecture. 
 
 // Project is in work. In feature will be added more functions
 
