@@ -40,14 +40,14 @@ Have a solid foundation for future projects
 - NSwag client code generation
 - Response wrappers
 - Custom Exception Handling Middlewares
-
+- Feature Microsoft Identity with JWT Authentication
+- Feature Register / Login & Generate Token
+- Feature Database Seeding
+- Feature Serilog
  - //Feature Swagger UI
  - //Feature Blazor WebAssembly
- - //Feature Serilog
  - //Feature Pagination
  - //Feature In-Memory Database for Integration Tests
- - //Feature Microsoft Identity with JWT Authentication
- - //Feature Database Seeding
  - //Feature Sendgrid Email Service
- - //Feature Register / Login & Generate Token
+
 
