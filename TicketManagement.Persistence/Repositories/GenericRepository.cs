@@ -7,9 +7,9 @@ namespace TicketManagement.Persistence.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
-    protected readonly FmDatabaseContext _context;
+    protected readonly TicketManagementDatabaseContext _context;
 
-    public GenericRepository(FmDatabaseContext context)
+    public GenericRepository(TicketManagementDatabaseContext context)
     {
         _context = context;
     }

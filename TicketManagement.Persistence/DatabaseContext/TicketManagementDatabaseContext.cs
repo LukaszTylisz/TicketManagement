@@ -5,9 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace TicketManagement.Persistence.DatabaseContext;
 
-public class FmDatabaseContext : DbContext
+public class TicketManagementDatabaseContext : DbContext
 {
-    public FmDatabaseContext(DbContextOptions<FmDatabaseContext> options) : base(options)
+    public TicketManagementDatabaseContext(DbContextOptions<TicketManagementDatabaseContext> options) : base(options)
     {
     }
 
@@ -17,7 +17,7 @@ public class FmDatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(FmDatabaseContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketManagementDatabaseContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
 

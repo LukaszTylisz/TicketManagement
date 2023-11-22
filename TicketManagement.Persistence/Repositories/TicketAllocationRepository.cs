@@ -7,7 +7,7 @@ namespace TicketManagement.Persistence.Repositories;
 
 public class TicketAllocationRepository : GenericRepository<TicketAllocation>, ITicketAllocationRepository
 {
-    public TicketAllocationRepository(FmDatabaseContext context) : base(context)
+    public TicketAllocationRepository(TicketManagementDatabaseContext context) : base(context)
     {
     }
 

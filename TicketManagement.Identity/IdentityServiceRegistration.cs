@@ -19,11 +19,11 @@ public static class IdentityServiceRegistration
     {
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-        services.AddDbContext<FmDatabaseIdentityDbContext>(options =>
+        services.AddDbContext<TicketManagementDatabaseIdentityDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("FootballDatabaseConnectionString")));
 
         services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<FmDatabaseIdentityDbContext>().AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<TicketManagementDatabaseIdentityDbContext>().AddDefaultTokenProviders();
 
         services.AddTransient<IAuthService, AuthService>();
         services.AddTransient<IUserService, UserService>();

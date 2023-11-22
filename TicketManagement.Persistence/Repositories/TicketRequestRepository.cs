@@ -7,7 +7,7 @@ namespace TicketManagement.Persistence.Repositories;
 
 public class TicketRequestRepository : GenericRepository<TicketRequest>, ITicketRequestRepository
 {
-    public TicketRequestRepository(FmDatabaseContext context) : base(context)
+    public TicketRequestRepository(TicketManagementDatabaseContext context) : base(context)
     {
     }
 
