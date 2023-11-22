@@ -2,13 +2,18 @@
 using TicketManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using TicketManagement.Application.Contracts.Identity;
 
 namespace TicketManagement.Persistence.DatabaseContext;
 
 public class TicketManagementDatabaseContext : DbContext
 {
-    public TicketManagementDatabaseContext(DbContextOptions<TicketManagementDatabaseContext> options) : base(options)
+    private readonly IUserService _userService;
+
+    public TicketManagementDatabaseContext(DbContextOptions<TicketManagementDatabaseContext> options,
+        IUserService userService) : base(options)
     {
+        _userService = userService;
     }
 
     public DbSet<TicketType> TicketTypes { get; set; }
@@ -30,9 +35,11 @@ public class TicketManagementDatabaseContext : DbContext
                      .Where(q => q.State == EntityState.Added || q.State == EntityState.Modified))
         {
             entry.Entity.DateModified = DateTime.Now;
+            entry.Entity.ModifiedBy = _userService.UserId;
             if (entry.State == EntityState.Added)
             {
                 entry.Entity.DateCreated = DateTime.Now;
+                entry.Entity.CreatedBy = _userService.UserId;
             }
         }
 

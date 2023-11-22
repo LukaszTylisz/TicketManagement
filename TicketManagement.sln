@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Api", "TicketManagement.Api\TicketManagement.Api.csproj", "{D6D23635-5063-4EF7-9DF7-67EDB8563767}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Api", "src\TicketManagement.Api\TicketManagement.Api.csproj", "{D6D23635-5063-4EF7-9DF7-67EDB8563767}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A95BB32E-444B-4C25-9A7C-690E4ED5EAC1}"
 EndProject
@@ -8,21 +8,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{21B39E20-E26
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0E9753A8-665F-476A-84BB-4671E8DFD84C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "src\Infrastructure", "{9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D26E1D5A-00BB-47AB-879B-0DFD46FAA565}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{701C0B23-7069-4304-A83C-F95FE4D4EB47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Domain", "TicketManagement.Domain\TicketManagement.Domain.csproj", "{1D6C2DAD-2BBE-470E-AD02-CAABF93F452A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Domain", "src\TicketManagement.Domain\TicketManagement.Domain.csproj", "{1D6C2DAD-2BBE-470E-AD02-CAABF93F452A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Application", "TicketManagement.Application\TicketManagement.Application.csproj", "{B1B76DF0-E3FB-4F8D-93E2-1993619076CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Application", "src\TicketManagement.Application\TicketManagement.Application.csproj", "{B1B76DF0-E3FB-4F8D-93E2-1993619076CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Infrastructure", "TicketManagement.Infrastructure\TicketManagement.Infrastructure.csproj", "{383C2290-BFD5-49DD-BED2-D126980B9DF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Infrastructure", "src\TicketManagement.Infrastructure\TicketManagement.Infrastructure.csproj", "{383C2290-BFD5-49DD-BED2-D126980B9DF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Persistence", "TicketManagement.Persistence\TicketManagement.Persistence.csproj", "{690B6CDD-806B-46D2-A44E-8D948DA843A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Persistence", "src\TicketManagement.Persistence\TicketManagement.Persistence.csproj", "{690B6CDD-806B-46D2-A44E-8D948DA843A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Identity", "TicketManagement.Identity\TicketManagement.Identity.csproj", "{3A4E865A-0EE9-4C87-857D-686D734679CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Identity", "src\TicketManagement.Identity\TicketManagement.Identity.csproj", "{3A4E865A-0EE9-4C87-857D-686D734679CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

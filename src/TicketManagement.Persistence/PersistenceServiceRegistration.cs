@@ -13,7 +13,7 @@ public static class PersistenceServiceRegistration
     {
         services.AddDbContext<TicketManagementDatabaseContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("FootballDatabaseConnectionString"));
+            options.UseSqlServer(configuration.GetConnectionString("TicketDatabaseConnectionString"));
         });
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
