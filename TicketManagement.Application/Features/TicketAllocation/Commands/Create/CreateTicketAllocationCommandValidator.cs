@@ -20,6 +20,6 @@ public class CreateTicketAllocationCommandValidator : AbstractValidator<CreateTi
     private async Task<bool> TicketTypeMustExist(int id, CancellationToken cancellationToken)
     {
         var ticketType = await _ticketTypeRepository.GetByIdAsync(id);
-        return true;
+        return ticketType != null;
     }
 }

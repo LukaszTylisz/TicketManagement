@@ -17,6 +17,10 @@ public class GetTicketTypeListHandler : IRequestHandler<GetTicketTypeListQuery, 
     
     public async Task<List<TicketAllocationDto>> Handle(GetTicketTypeListQuery request, CancellationToken cancellationToken)
     {
+        // TO DO 
+        // - Get records for specific user
+        // - Get allocations per client
+        
         var ticketAllocations = await _ticketAllocationRepository.GetTicketAllocationWithDetails();
         var allocations = _mapper.Map<List<TicketAllocationDto>>(ticketAllocations);
 

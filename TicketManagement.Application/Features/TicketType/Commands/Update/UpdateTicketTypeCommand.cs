@@ -6,5 +6,5 @@ public class UpdateTicketTypeCommand : IRequest<Unit>
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public int DefaultResolutionTime { get; set; }
+    public int DefaultDays { get; set; }
 }

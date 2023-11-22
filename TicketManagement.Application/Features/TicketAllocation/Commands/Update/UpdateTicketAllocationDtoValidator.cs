@@ -14,7 +14,7 @@ public class UpdateTicketAllocationDtoValidator : AbstractValidator<UpdateTicket
         _ticketTypeRepository = ticketTypeRepository;
         this._ticketAllocationRepository = ticketAllocationRepository;
         
-        RuleFor(t => t.NumberOfTickets)
+        RuleFor(t => t.NumberOfDays)
             .GreaterThan(0).WithMessage("{PropertyName} must greater than {ComparisonValue}");
         
         RuleFor(t => t.Period)

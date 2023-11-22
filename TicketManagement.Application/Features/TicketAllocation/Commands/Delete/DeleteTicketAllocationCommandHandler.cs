@@ -18,12 +18,12 @@ namespace TicketManagement.Application.Features.TicketAllocation.Commands.Delete
 
         public async Task Handle(DeleteTicketAllocationCommand request, CancellationToken cancellationToken)
         {
-            var leaveAllocation = await _ticketAllocationRepository.GetByIdAsync(request.Id);
+            var ticketAllocation = await _ticketAllocationRepository.GetByIdAsync(request.Id);
 
-            if (leaveAllocation == null)
+            if (ticketAllocation == null)
                 throw new NotFoundException(nameof(TicketAllocation), request.Id);
 
-            await _ticketAllocationRepository.DeleteAsync(leaveAllocation);
+            await _ticketAllocationRepository.DeleteAsync(ticketAllocation);
         }
     }
 }

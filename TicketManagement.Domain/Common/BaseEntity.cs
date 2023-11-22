@@ -1,4 +1,6 @@
 ﻿namespace TicketManagement.Domain.Common;
+
+#nullable enable
 public abstract class BaseEntity
 {
     public int Id { get; set; }

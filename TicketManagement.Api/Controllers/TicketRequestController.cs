@@ -31,16 +31,14 @@ public class TicketRequestController : ControllerBase
         var ticketRequests = await _mediator.Send(new GetTicketRequestListQuery());
         return Ok(ticketRequests);
     }
-
-    // GET api/<LeaveRequestsController>/5
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<TicketRequestDetailsDto>> Get(int id)
     {
         var ticketRequest = await _mediator.Send(new GetTicketRequestDetailQuery { Id = id });
         return Ok(ticketRequest);
     }
-
-    // POST api/<LeaveRequestsController>
+    
     [HttpPost]
     [ProducesResponseType(201)]
     [ProducesResponseType(400)]
@@ -50,8 +48,7 @@ public class TicketRequestController : ControllerBase
         var response = await _mediator.Send(ticketRequest);
         return CreatedAtAction(nameof(Get), new { id = response });
     }
-
-    // PUT api/<LeaveRequestsController>/5
+    
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(400)]
@@ -62,21 +59,19 @@ public class TicketRequestController : ControllerBase
         await _mediator.Send(ticketRequest);
         return NoContent();
     }
-
-    // PUT api/<LeaveRequestsController>/CancelRequest/
+    
     [HttpPut]
     [Route("CancelRequest")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(400)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> CancelRequest(CancelTicketRequestCommand cancelLeaveRequest)
+    public async Task<ActionResult> CancelRequest(CancelTicketRequestCommand cancelTicketRequest)
     {
-        await _mediator.Send(cancelLeaveRequest);
+        await _mediator.Send(cancelTicketRequest);
         return NoContent();
     }
-
-    // PUT api/<LeaveRequestsController>/UpdateApproval/
+    
     [HttpPut]
     [Route("UpdateApproval")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -88,8 +83,7 @@ public class TicketRequestController : ControllerBase
         await _mediator.Send(updateResolvedRequest);
         return NoContent();
     }
-
-    // DELETE api/<LeaveRequestsController>/5
+    
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -8,19 +8,14 @@ public class DeleteTicketTypeCommandHandler : IRequestHandler<DeleteTicketTypeCo
 {
     private readonly ITicketTypeRepository _ticketTypeRepository;
 
-    public DeleteTicketTypeCommandHandler(ITicketTypeRepository ticketTypeRepository)
-    {
+    public DeleteTicketTypeCommandHandler(ITicketTypeRepository ticketTypeRepository) =>
         _ticketTypeRepository = ticketTypeRepository;
-    }
     
     public async Task<Unit> Handle(DeleteTicketTypeCommand request, CancellationToken cancellationToken)
     {
         // retrieve domain entity project
-        var ticketTypeToDelete = await _ticketTypeRepository.GetByIdAsync(request.Id);
-        
-        // verify that record exists
-        _ = ticketTypeToDelete ?? throw new NotFoundException(nameof(TicketType), request.Id);
-        
+        var ticketTypeToDelete = await _ticketTypeRepository.GetByIdAsync(request.Id) ?? 
+                                 throw new NotFoundException(nameof(TicketType), request.Id);
         // remove from database
         await _ticketTypeRepository.DeleteAsync(ticketTypeToDelete);
 

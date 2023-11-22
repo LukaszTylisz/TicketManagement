@@ -5,13 +5,13 @@ using TicketManagement.Application.Exceptions;
 
 namespace TicketManagement.Application.Features.TicketAllocation.Commands.Update;
 
-public class UpdateTicketAllocationHandler : IRequestHandler<UpdateTicketAllocationCommand, Unit>
+public class UpdateTicketAllocationCommandHandler : IRequestHandler<UpdateTicketAllocationCommand, Unit>
 {
     private readonly IMapper _mapper;
     private readonly ITicketTypeRepository _ticketTypeRepository;
     private readonly ITicketAllocationRepository _ticketAllocationRepository;
 
-    public UpdateTicketAllocationHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository,
+    public UpdateTicketAllocationCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository,
         ITicketAllocationRepository ticketAllocationRepository)
     {
         _mapper = mapper;

@@ -5,7 +5,7 @@ namespace TicketManagement.Application.Features.TicketAllocation.Queries.GetTitc
 public class TicketAllocationsDetailsDto
 {
     public int Id { get; set; }
-    public int NumberOfTickets { get; set; }
+    public int NumberOfDays { get; set; }
     public TicketTypeDto TicketType { get; set; }
     public int TicketTypeId { get; set; }
     public int Period { get; set; }

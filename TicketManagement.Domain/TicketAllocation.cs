@@ -2,6 +2,7 @@
 
 namespace TicketManagement.Domain;
 
+#nullable enable
 public class TicketAllocation : BaseEntity  
 {
     public int NumberOfDays { get; set; }

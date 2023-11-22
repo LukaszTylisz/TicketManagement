@@ -15,13 +15,13 @@ public class CreateTicketTypeCommandValidator : AbstractValidator<CreateTicketTy
             .NotNull()
             .MaximumLength(20).WithMessage("{PropertyName} must be fewer than 20 characters");
 
-        RuleFor(p => p.DefaultResolutionTime)
+        RuleFor(p => p.DefaultDays)
             .LessThan(100).WithMessage("{PropertyName} cannot exceed 100 ")
             .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
 
         RuleFor(q => q)
             .MustAsync(TicketNameUnique)
-            .WithMessage("Leave Type already exists");
+            .WithMessage("Ticket Type already exists");
 
         _ticketTypeRepository = ticketTypeRepository;
     }

@@ -28,7 +28,7 @@ public class CreateTicketAllocationCommandHandler : IRequestHandler<CreateTicket
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.Errors.Any())
-            throw new BadRequestException("Invalid Leave Allocation Request", validationResult);
+            throw new BadRequestException("Invalid Ticket Allocation Request", validationResult);
 
         // Get Ticket Type for Allocations
         var ticketType = await _ticketTypeRepository.GetByIdAsync(request.TicketTypeId);

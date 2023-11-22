@@ -6,7 +6,7 @@ public interface ITicketAllocationRepository : IGenericRepository<TicketAllocati
 {
     Task<TicketAllocation> GetTicketAllocationDetails(int id);
     Task<List<TicketAllocation>> GetTicketAllocationWithDetails();
-    Task<List<TicketAllocation>> GetLeaveAllocationsWithDetails(string userId);
+    Task<List<TicketAllocation>> GetTicketAllocationsWithDetails(string userId);
     Task<bool> AllocationExists(string userId, int ticketTypeId, int period);
     Task AddAllocations(List<TicketAllocation> allocations);
     Task<TicketAllocation> GetUserAllocations(string userId, int ticketTypeId);

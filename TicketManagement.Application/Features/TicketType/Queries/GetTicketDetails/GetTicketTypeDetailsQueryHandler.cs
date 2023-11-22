@@ -17,9 +17,8 @@ public class GetTicketTypeDetailsQueryHandler : IRequestHandler<GetTicketTypeDet
     }
     public async Task<TicketTypeDetailsDto> Handle(GetTicketTypeDetailsQuery request, CancellationToken cancellationToken)
     {
-        var ticketType = await _ticketTypeRepository.GetByIdAsync(request.id);
-
-        _ = ticketType ?? throw new NotFoundException(nameof(TicketType), request.id);
+        var ticketType = await _ticketTypeRepository.GetByIdAsync(request.id) ??
+                         throw new NotFoundException(nameof(TicketType), request.id);
         
         var data = _mapper.Map<TicketTypeDetailsDto>(ticketType);
 

@@ -29,7 +29,7 @@ public class TicketAllocationRepository : GenericRepository<TicketAllocation>, I
         return ticketAllocations;
     }
 
-    public async Task<List<TicketAllocation>> GetLeaveAllocationsWithDetails(string userId)
+    public async Task<List<TicketAllocation>> GetTicketAllocationsWithDetails(string userId)
     {
         var ticketAllocations = await _context.TicketAllocations
             .Where(q => q.ClientId == userId)

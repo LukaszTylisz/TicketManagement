@@ -7,26 +7,25 @@ namespace TicketManagement.Application.Features.TicketRequest.Commands.Update;
 public class UpdateTicketRequestCommandValidator : AbstractValidator<UpdateTicketRequestCommand>
 {
     private readonly ITicketTypeRepository _ticketTypeRepository;
+    private readonly ITicketRequestRepository _ticketRequestRepository;
 
-    public UpdateTicketRequestCommandValidator(ITicketTypeRepository ticketTypeRepository)
+    public UpdateTicketRequestCommandValidator(ITicketTypeRepository ticketTypeRepository,
+        ITicketRequestRepository ticketRequestRepository)
     {
         _ticketTypeRepository = ticketTypeRepository;
+        _ticketRequestRepository = ticketRequestRepository;
 
-        RuleFor(p => p.StartDate)
-            .LessThan(p => p.EndDate).WithMessage("{PropertyName} must be before {ComparisonValue}");
+        Include(new BaseTicketRequestValidator(_ticketTypeRepository));
 
-        RuleFor(p => p.EndDate)
-            .GreaterThan(p => p.StartDate).WithMessage("{PropertyName} must be after {ComparisonValue}");
-
-        RuleFor(p => p.TicketTypeId)
-            .GreaterThan(0)
-            .MustAsync(TicketTypeMustExist)
-            .WithMessage("{PropertyName} does not exist.");
+        RuleFor(p => p.Id)
+            .NotNull()
+            .MustAsync(TicketRequestMustExist)
+            .WithMessage("{PropertyName} must be present");
     }
 
-    private async Task<bool> TicketTypeMustExist(int id, CancellationToken cancellationToken)
+    private async Task<bool> TicketRequestMustExist(int id, CancellationToken cancellationToken)
     {
-        var ticketType = await _ticketTypeRepository.GetByIdAsync(id);
-        return ticketType != null;
+        var ticketAllocation = await _ticketRequestRepository.GetByIdAsync(id);
+        return ticketAllocation != null;
     }
 }

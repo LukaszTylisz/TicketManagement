@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using MediatR;
+using TicketManagement.Application.Contracts.Logging;
 using TicketManagement.Application.Contracts.Persistance;
 using TicketManagement.Application.Exceptions;
 
@@ -10,11 +11,13 @@ public class UpdateTicketTypeCommandHandler : IRequestHandler<UpdateTicketTypeCo
 {
     private readonly IMapper _mapper;
     private readonly ITicketTypeRepository _ticketTypeRepository;
+    private readonly IAppLoger<UpdateTicketTypeCommandHandler> _logger;
 
-    public UpdateTicketTypeCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository)
+    public UpdateTicketTypeCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLoger<UpdateTicketTypeCommandHandler> loger)
     {
         _mapper = mapper;
         _ticketTypeRepository = ticketTypeRepository;
+        _logger = loger;
     }
     public async Task<Unit> Handle(UpdateTicketTypeCommand request, CancellationToken cancellationToken)
     {
@@ -23,7 +26,8 @@ public class UpdateTicketTypeCommandHandler : IRequestHandler<UpdateTicketTypeCo
         
         if (validationResult.Errors.Any())
         {
-            throw new BadRequestException("Invalid Leave type", validationResult);
+            _logger.LogWarning("Validation errors in update ticket for {0} - {1}", nameof(TicketType), request.Id);
+            throw new BadRequestException("Invalid ticket type", validationResult);
         }
 
         var ticketTypeToUpdate = _mapper.Map<Domain.TicketType>(request);
