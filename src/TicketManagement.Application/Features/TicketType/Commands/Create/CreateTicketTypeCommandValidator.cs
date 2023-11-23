@@ -13,7 +13,7 @@ public class CreateTicketTypeCommandValidator : AbstractValidator<CreateTicketTy
         RuleFor(p => p.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")
             .NotNull()
-            .MaximumLength(20).WithMessage("{PropertyName} must be fewer than 20 characters");
+            .MaximumLength(70).WithMessage("{PropertyName} must be fewer than 20 characters");
 
         RuleFor(p => p.DefaultDays)
             .LessThan(100).WithMessage("{PropertyName} cannot exceed 100 ")

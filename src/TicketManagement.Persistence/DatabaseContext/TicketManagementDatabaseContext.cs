@@ -13,7 +13,8 @@ public class TicketManagementDatabaseContext : DbContext
     public TicketManagementDatabaseContext(DbContextOptions<TicketManagementDatabaseContext> options,
         IUserService userService) : base(options)
     {
-        _userService = userService;
+        this._userService = userService;
+        Console.WriteLine("DbContext initialized.");
     }
 
     public DbSet<TicketType> TicketTypes { get; set; }

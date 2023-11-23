@@ -20,7 +20,8 @@ public static class IdentityServiceRegistration
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
         services.AddDbContext<TicketManagementDatabaseIdentityDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("FootballDatabaseConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("FootballDatabaseConnectionString")),
+            ServiceLifetime.Scoped);
 
         services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<TicketManagementDatabaseIdentityDbContext>().AddDefaultTokenProviders();

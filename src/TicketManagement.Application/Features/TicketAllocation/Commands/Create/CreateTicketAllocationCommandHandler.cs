@@ -51,7 +51,7 @@ public class CreateTicketAllocationCommandHandler : IRequestHandler<CreateTicket
                 {
                     ClientId = client.Id,
                     TicketTypeId = ticketType.Id,
-                    NumberOfDays = ticketType.DefaultResolutionTime,
+                    NumberOfDays = ticketType.DefaultDays,
                     Period = period
                 });
             }

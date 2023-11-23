@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using TicketManagement.Application.Contracts.Identity;
 
 namespace TicketManagement.Application;
 

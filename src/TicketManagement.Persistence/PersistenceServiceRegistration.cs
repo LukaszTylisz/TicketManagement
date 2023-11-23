@@ -12,9 +12,7 @@ public static class PersistenceServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<TicketManagementDatabaseContext>(options =>
-        {
-            options.UseSqlServer(configuration.GetConnectionString("TicketDatabaseConnectionString"));
-        });
+            options.UseSqlServer(configuration.GetConnectionString("TicketDatabaseConnectionString")));
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();

@@ -11,7 +11,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
     public GenericRepository(TicketManagementDatabaseContext context)
     {
-        _context = context;
+        this._context = context;
     }
 
     public async Task CreateAsync(T entity)

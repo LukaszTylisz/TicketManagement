@@ -52,8 +52,9 @@ public class TicketAllocationRepository : GenericRepository<TicketAllocation>, I
         await _context.SaveChangesAsync();
     }
 
-    public Task<TicketAllocation> GetUserAllocations(string userId, int ticketTypeId)
+    public async Task<TicketAllocation> GetUserAllocations(string userId, int ticketTypeId)
     {
-        throw new NotImplementedException();
+        return await _context.TicketAllocations.FirstOrDefaultAsync(q => q.ClientId == userId
+                                                                        && q.TicketTypeId == ticketTypeId);
     }
 }

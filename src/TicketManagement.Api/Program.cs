@@ -4,6 +4,7 @@ using TicketManagement.Infrastructure;
 using TicketManagement.Persistence;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
+using TicketManagement.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,13 +30,15 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddHttpContextAccessor();
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlerMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
