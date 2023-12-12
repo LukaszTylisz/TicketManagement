@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TicketManagement.Application.Features.TicketType.Commands.Create;
 using TicketManagement.Application.Features.TicketType.Commands.Delete;
@@ -8,6 +9,9 @@ using TicketManagement.Application.Features.TicketType.Queries.GetTicketDetails;
 
 namespace TicketManagement.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
 public class TicketTypesController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -24,7 +28,7 @@ public class TicketTypesController : ControllerBase
         return ticketTypes;
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<TicketTypeDetailsDto>> Get(int id)
     {
         var ticketTypes = await _mediator.Send(new GetTicketTypeDetailsQuery(id));

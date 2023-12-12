@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Persistenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Identity", "src\TicketManagement.Identity\TicketManagement.Identity.csproj", "{3A4E865A-0EE9-4C87-857D-686D734679CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Blazor.UI", "src\TicketManagement.Blazor.UI\TicketManagement.Blazor.UI.csproj", "{BA45957F-8E96-460B-87AF-26A0BF677908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A4E865A-0EE9-4C87-857D-686D734679CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA45957F-8E96-460B-87AF-26A0BF677908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA45957F-8E96-460B-87AF-26A0BF677908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA45957F-8E96-460B-87AF-26A0BF677908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA45957F-8E96-460B-87AF-26A0BF677908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21B39E20-E26C-40D7-8904-9FCF5C9045BA} = {A95BB32E-444B-4C25-9A7C-690E4ED5EAC1}
@@ -66,5 +72,6 @@ Global
 		{383C2290-BFD5-49DD-BED2-D126980B9DF9} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
 		{690B6CDD-806B-46D2-A44E-8D948DA843A8} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
 		{3A4E865A-0EE9-4C87-857D-686D734679CE} = {9F93AB8A-FFD8-4DE5-BFA4-86282E472AE6}
+		{BA45957F-8E96-460B-87AF-26A0BF677908} = {D26E1D5A-00BB-47AB-879B-0DFD46FAA565}
 	EndGlobalSection
 EndGlobal
