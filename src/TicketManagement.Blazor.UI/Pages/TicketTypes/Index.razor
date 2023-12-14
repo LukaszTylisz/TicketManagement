@@ -1,0 +1,52 @@
+﻿@page "/tickettypes/"
+@using TicketManagement.Blazor.UI.Services.Base
+<h3>Ticket Types</h3>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="CreateTicketType" class="btn btn-success">Add Ticket Type</button>
+</div>
+
+@Message
+
+@if (TicketTypes == null)
+{
+    <p>Loading Data..</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                DefaultDays
+            </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var ticketType in TicketTypes)
+        {
+            <tr>
+                <td>@ticketType.Id </td>
+                <td>@ticketType.Name </td>
+                <td>@ticketType.DefaultDays </td>
+                <td>
+                    <button @onclick=@(() => AllocateTicketType(ticketType.Id))
+                            class="btn btn-dark">
+                        Allocate Ticket
+                    </button>
+                    <button @onclick="@(() => EditTicketType(ticketType.Id))" class="btn btn-warning">Edit</button>
+                    <button @onclick="@(() => DeleteTicketType(ticketType.Id))" class="btn btn-danger">Delete</button>
+                    <button @onclick="@(() => DetailsTicketType(ticketType.Id))" class="btn btn-info">Details</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

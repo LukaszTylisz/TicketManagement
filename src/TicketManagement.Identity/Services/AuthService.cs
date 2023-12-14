@@ -101,7 +101,7 @@ public class AuthService : IAuthService
             .Union(userCaims)
             .Union(roleClaims);
 
-        var symetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+        var symetricSecurityKey = new SymmetricSecurityKey(_jwtSettings.Key);
 
         var signInCredentials = new SigningCredentials(symetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
