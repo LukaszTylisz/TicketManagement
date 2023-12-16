@@ -1,8 +1,11 @@
 using System.Reflection;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using TicketManagement.Blazor.UI;
 using TicketManagement.Blazor.UI.Contracts;
+using TicketManagement.Blazor.UI.Providers;
 using TicketManagement.Blazor.UI.Services;
 using TicketManagement.Blazor.UI.Services.Base;
 
@@ -14,10 +17,13 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("http://localhost:7233"));
 
-builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
-builder.Services.AddScoped<ITicketAllocationService, TicketAllocationService>();
-builder.Services.AddScoped<ITicketRequestService, TicketRequestService>();
-
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services
+    .AddBlazoredLocalStorage()
+    .AddAuthorizationCore()
+    .AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>()
+    .AddScoped<ITicketTypeService, TicketTypeService>()
+    .AddScoped<ITicketAllocationService, TicketAllocationService>()
+    .AddScoped<ITicketRequestService, TicketRequestService>()
+    .AddAutoMapper(Assembly.GetExecutingAssembly());
     
 await builder.Build().RunAsync();

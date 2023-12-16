@@ -168,12 +168,12 @@ namespace TicketManagement.Blazor.UI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketTypeDetailsDto> IdAsync(int? id);
+        System.Threading.Tasks.Task<TicketTypeDetailsDto> TicketTypesGETAsync(int id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TicketTypeDetailsDto> IdAsync(int? id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<TicketTypeDetailsDto> TicketTypesGETAsync(int id, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1599,23 +1599,22 @@ namespace TicketManagement.Blazor.UI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TicketTypeDetailsDto> IdAsync(int? id)
+        public virtual System.Threading.Tasks.Task<TicketTypeDetailsDto> TicketTypesGETAsync(int id)
         {
-            return IdAsync(id, System.Threading.CancellationToken.None);
+            return TicketTypesGETAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TicketTypeDetailsDto> IdAsync(int? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<TicketTypeDetailsDto> TicketTypesGETAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/TicketTypes/id?");
-            if (id != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            urlBuilder_.Length--;
+            urlBuilder_.Append("api/TicketTypes/{id}");
+            urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2030,6 +2029,32 @@ namespace TicketManagement.Blazor.UI.Services.Base
         public bool Resolved { get; set; }
 
     }
+
+    // [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.0.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    // public partial class Client
+    // {
+    //
+    //     [System.Text.Json.Serialization.JsonPropertyName("id")]
+    //
+    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+    //     public string Id { get; set; }
+    //
+    //     [System.Text.Json.Serialization.JsonPropertyName("email")]
+    //
+    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+    //     public string Email { get; set; }
+    //
+    //     [System.Text.Json.Serialization.JsonPropertyName("firstname")]
+    //
+    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+    //     public string Firstname { get; set; }
+    //
+    //     [System.Text.Json.Serialization.JsonPropertyName("lastname")]
+    //
+    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+    //     public string Lastname { get; set; }
+    //
+    // }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.0.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateTicketAllocationCommand

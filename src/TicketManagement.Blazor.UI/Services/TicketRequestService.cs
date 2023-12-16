@@ -1,11 +1,12 @@
-﻿using TicketManagement.Blazor.UI.Contracts;
+﻿using Blazored.LocalStorage;
+using TicketManagement.Blazor.UI.Contracts;
 using TicketManagement.Blazor.UI.Services.Base;
 
 namespace TicketManagement.Blazor.UI.Services;
 
 public class TicketRequestService : BaseHttpService, ITicketRequestService
 {
-    public TicketRequestService(IClient client) : base(client)
+    public TicketRequestService(IClient client, ILocalStorageService localStorage) : base(client, localStorage)
     {
     }
 }
