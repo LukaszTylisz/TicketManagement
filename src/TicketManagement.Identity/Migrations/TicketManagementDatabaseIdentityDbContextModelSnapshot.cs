@@ -52,7 +52,7 @@ namespace TicketManagement.Identity.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                            Name = "Client",
+                            Name = "U",
                             NormalizedName = "CLIENT"
                         },
                         new
@@ -258,7 +258,7 @@ namespace TicketManagement.Identity.Migrations
                         {
                             Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "63ea8bee-bc78-4e3b-8532-2c8e2796a753",
+                            ConcurrencyStamp = "818a4245-f493-440e-a731-d76ab06b15fb",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -266,9 +266,9 @@ namespace TicketManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAED/jrVMd18ESzBFYWQ4LaNQEStJLM8SWM40MxU7q7W4TlIo8sBW1EoCuEx4diUcSKQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJonzoWSwGjlF5YL0nJWNwk+T6Q2/2CG/CSZ1U7LOq92MJrnP7ObeNyLGIShdp16XQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "739f5839-277d-4694-8ff6-f744d2dfe9a0",
+                            SecurityStamp = "72b3455e-327f-4a27-8b0b-0c3f36490c23",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -276,7 +276,7 @@ namespace TicketManagement.Identity.Migrations
                         {
                             Id = "9e224968-33e4-4652-b7b7-8574d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "28b52b47-e521-4f37-a2d6-46755deacbd2",
+                            ConcurrencyStamp = "29a756c9-20a6-43ec-8dbc-947ec735eeec",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -284,9 +284,9 @@ namespace TicketManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMffzKS3Avo68Xw/hnnKRPv3Ee4lU4iYFMZbVg1NWX8UM0HLXhI7KWaAltPpkOHtVQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO/5i6G3T9HwvgGKrW50ZgYWfrpAFe9dsWil5CMaDTDW8QEoOcb/vA6TTRKtxDHILA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "88af742f-a2f3-429a-a6b5-159e583a4d98",
+                            SecurityStamp = "35cf8992-4c71-4034-a9d3-de32bf930214",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });

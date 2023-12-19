@@ -1,5 +1,6 @@
 using System.Reflection;
 using Blazored.LocalStorage;
+using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -15,15 +16,18 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("http://localhost:7233"));
+builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("http://localhost:5152"));
 
 builder.Services
+    .AddBlazoredToast()
     .AddBlazoredLocalStorage()
     .AddAuthorizationCore()
+    .AddScoped<ApiAuthenticationStateProvider>()
     .AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>()
     .AddScoped<ITicketTypeService, TicketTypeService>()
     .AddScoped<ITicketAllocationService, TicketAllocationService>()
     .AddScoped<ITicketRequestService, TicketRequestService>()
+    .AddScoped<IAuthenticationService, AuthenticationService>()
     .AddAutoMapper(Assembly.GetExecutingAssembly());
     
 await builder.Build().RunAsync();

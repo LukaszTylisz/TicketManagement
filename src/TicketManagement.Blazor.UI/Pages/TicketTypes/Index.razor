@@ -16,37 +16,39 @@ else
 {
     <table class="table">
         <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                DefaultDays
-            </th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    DefaultDays
+                </th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var ticketType in TicketTypes)
-        {
-            <tr>
-                <td>@ticketType.Id </td>
-                <td>@ticketType.Name </td>
-                <td>@ticketType.DefaultDays </td>
-                <td>
-                    <button @onclick=@(() => AllocateTicketType(ticketType.Id))
-                            class="btn btn-dark">
-                        Allocate Ticket
-                    </button>
-                    <button @onclick="@(() => EditTicketType(ticketType.Id))" class="btn btn-warning">Edit</button>
-                    <button @onclick="@(() => DeleteTicketType(ticketType.Id))" class="btn btn-danger">Delete</button>
-                    <button @onclick="@(() => DetailsTicketType(ticketType.Id))" class="btn btn-info">Details</button>
-                </td>
-            </tr>
-        }
+            @foreach (var ticketType in TicketTypes)
+            {
+                <tr>
+                    <td>@ticketType.Id </td>
+                    <td>@ticketType.Name </td>
+                    <td>@ticketType.DefaultDays </td>
+                    <td>
+                        <AuthorizeView Roles="Administrator">
+                            <button @onclick=@(() => AllocateTicketType(ticketType.Id))
+                                    class="btn btn-dark">
+                                Allocate Ticket
+                            </button>
+                            <button @onclick="@(() => EditTicketType(ticketType.Id))" class="btn btn-warning">Edit</button>
+                            <button @onclick="@(() => DeleteTicketType(ticketType.Id))" class="btn btn-danger">Delete</button>
+                        </AuthorizeView>
+                        <button @onclick="@(() => DetailsTicketType(ticketType.Id))" class="btn btn-info">Details</button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 }

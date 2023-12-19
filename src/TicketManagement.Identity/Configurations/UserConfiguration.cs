@@ -20,7 +20,7 @@ namespace TicketManagement.Identity.Configurations
                      LastName = "Admin",
                      UserName = "admin@localhost.com",
                      NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                     PasswordHash = hasher.HashPassword(null, "Password1!"),
+                     PasswordHash = hasher.HashPassword(null, "P@ssword1"),
                      EmailConfirmed = true
                  },
                  new ApplicationUser
@@ -32,7 +32,7 @@ namespace TicketManagement.Identity.Configurations
                      LastName = "User",
                      UserName = "user@localhost.com",
                      NormalizedUserName = "USER@LOCALHOST.COM",
-                     PasswordHash = hasher.HashPassword(null, "Password1!"),
+                     PasswordHash = hasher.HashPassword(null, "P@ssword1"),
                      EmailConfirmed = true
                  }
             );

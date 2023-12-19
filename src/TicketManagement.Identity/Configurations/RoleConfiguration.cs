@@ -12,7 +12,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
             new IdentityRole
             {
                 Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                Name = "Client",
+                Name = "U",
                 NormalizedName = "CLIENT"
             },
             new IdentityRole
