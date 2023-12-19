@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D26E1D5A-00BB-47AB-879B-0DFD46FAA565}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{701C0B23-7069-4304-A83C-F95FE4D4EB47}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{701C0B23-7069-4304-A83C-F95FE4D4EB47}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketManagement.Domain", "src\TicketManagement.Domain\TicketManagement.Domain.csproj", "{1D6C2DAD-2BBE-470E-AD02-CAABF93F452A}"
 EndProject
