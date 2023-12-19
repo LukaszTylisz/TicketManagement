@@ -1,7 +1,32 @@
 ## Ticket Management
-This is a ticket sales back office application built with ASP.NET Core 8 Web API and Blazor WebAssembly as the UI and consumer of the API. Using an Onion Architecture with Clean Architecture based on architectural principles, the end goal is to have a testable and maintainable application architecture. 
+This is a ticket sales back office application built with `ASP.NET Core 8 Web API` and  `Blazor WebAssembly` as the UI and consumer of the API. Using an Onion Architecture with Clean Architecture based on architectural principles, the end goal is to have a testable and maintainable application architecture. 
 
 // Project is in work. In feature will be added more functions
+
+## Requirements
+
+Before you begin, ensure you have the following software installed on your system:
+
+- [.NET Core 8 SDK]
+
+## Development Setup
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/LukaszTylisz/TicketManagement.git
+   
+2. Create a database with -Context TicketManagementDatabaseContext then TicketManagementDatabaseIdentityDbContext and apply migrations:
+   ```bash
+    update-database -Context dbContext
+3. Back end run on: https://localhost:7025/ and Front end on: https://localhost:7233
+
+### Solution structure
+
+![image](https://github.com/LukaszTylisz/TicketManagement/assets/86656091/5d4bffe8-433c-4c05-b959-dbaf88d73c93)
+
+### Swagger
+
+![image](https://github.com/LukaszTylisz/TicketManagement/assets/86656091/5ce49cbc-24e3-43c9-8d58-5745cbf58a96)
+
 
 ### Architecture overview
 
