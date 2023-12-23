@@ -11,6 +11,8 @@ public partial class Index
     
     [Inject]
     public ITicketTypeService TicketTypeService { get; set; }
+    [Inject]
+    public ITicketAllocationService TicketAllocationService { get; set; }
     public List<TicketTypeVM> TicketTypes {  get; private set; }
     public string Message { get; set; } = string.Empty;
     protected void CreateTicketType()
@@ -20,7 +22,7 @@ public partial class Index
 
     protected void AllocateTicketType(int id)
     {
-        // // Use Ticket Allocation Service here
+        TicketAllocationService.CreateTicketAllocations(id);
     }
 
     protected void EditTicketType(int id)
