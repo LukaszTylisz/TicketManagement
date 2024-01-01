@@ -1,6 +1,6 @@
 ﻿namespace TicketManagement.Blazor.UI.Models.TicketRequests
 {
-    public class AdminLeaveRequestViewVm
+    public class AdminTicketRequestViewVM
     {
         public int TotalRequests { get; set; }
         public int ApprovedRequests { get; set; }

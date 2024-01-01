@@ -17,7 +17,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketRequests
         public bool? Approved { get; set; }
 
         public bool Cancelled { get; set; }
-        public TicketTypeVM LeaveType { get; set; } = new TicketTypeVM();
+        public TicketTypeVM TicketType { get; set; } = new TicketTypeVM();
         public ClientVm Employee { get; set; } = new ClientVm();
 
         [Display(Name = "Start Date")]
@@ -30,7 +30,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketRequests
 
         [Display(Name = "Ticket Type")]
         [Required]
-        public int LeaveTypeId { get; set; }
+        public int TicketTypeId { get; set; }
 
         [Display(Name = "Comments")]
         [MaxLength(300)]

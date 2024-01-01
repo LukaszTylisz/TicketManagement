@@ -1,6 +1,6 @@
 ﻿namespace TicketManagement.Application.Contracts.Logging;
 
-public interface IAppLoger<T>
+public interface IAppLogger<T>
 {
     void LogInformation(string message, params object[] args);
     void LogWarning(string message, params object[] args);
