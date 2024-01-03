@@ -15,11 +15,11 @@ public class ChangeTicketRequestResolvedHandler : IRequestHandler<ChangeTicketRe
     private readonly ITicketRequestRepository _ticketRequestRepository;
     private readonly IMapper _mapper;
     private readonly IEmailSender _emailSender;
-    private readonly IAppLoger<ChangeTicketRequestResolvedHandler> _appLoger;
+    private readonly IAppLogger<ChangeTicketRequestResolvedHandler> _appLoger;
 
     public ChangeTicketRequestResolvedHandler(ITicketTypeRepository ticketTypeRepository,
         ITicketAllocationRepository ticketAllocationRepository, ITicketRequestRepository ticketRequestRepository,
-        IMapper mapper, IEmailSender emailSender, IAppLoger<ChangeTicketRequestResolvedHandler> appLoger)
+        IMapper mapper, IEmailSender emailSender, IAppLogger<ChangeTicketRequestResolvedHandler> appLoger)
     {
         _ticketTypeRepository = ticketTypeRepository;
         _ticketAllocationRepository = ticketAllocationRepository;

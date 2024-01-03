@@ -2030,31 +2030,31 @@ namespace TicketManagement.Blazor.UI.Services.Base
 
     }
 
-    // [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.0.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    // public partial class Client
-    // {
-    //
-    //     [System.Text.Json.Serialization.JsonPropertyName("id")]
-    //
-    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-    //     public string Id { get; set; }
-    //
-    //     [System.Text.Json.Serialization.JsonPropertyName("email")]
-    //
-    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-    //     public string Email { get; set; }
-    //
-    //     [System.Text.Json.Serialization.JsonPropertyName("firstname")]
-    //
-    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-    //     public string Firstname { get; set; }
-    //
-    //     [System.Text.Json.Serialization.JsonPropertyName("lastname")]
-    //
-    //     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-    //     public string Lastname { get; set; }
-    //
-    // }
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.0.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Clients
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        public string Id { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("email")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        public string Email { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("firstname")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        public string Firstname { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("lastname")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        public string Lastname { get; set; }
+
+    }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.0.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateTicketAllocationCommand

@@ -14,11 +14,11 @@ public class UpdateTicketRequestCommandHandler : IRequestHandler<UpdateTicketReq
     private readonly ITicketTypeRepository _ticketTypeRepository;
     private readonly IMapper _mapper;
     private readonly IEmailSender _emailSender;
-    private readonly IAppLoger<UpdateTicketRequestCommand> _appLoger;
+    private readonly IAppLogger<UpdateTicketRequestCommand> _appLoger;
 
     public UpdateTicketRequestCommandHandler(ITicketRequestRepository ticketRequestRepository,
         ITicketTypeRepository ticketTypeRepository, IMapper mapper, IEmailSender emailSender,
-        IAppLoger<UpdateTicketRequestCommand> appLoger)
+        IAppLogger<UpdateTicketRequestCommand> appLoger)
     {
         _ticketRequestRepository = ticketRequestRepository;
         _ticketTypeRepository = ticketTypeRepository;

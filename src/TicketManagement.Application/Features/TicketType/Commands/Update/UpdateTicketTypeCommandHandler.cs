@@ -11,9 +11,9 @@ public class UpdateTicketTypeCommandHandler : IRequestHandler<UpdateTicketTypeCo
 {
     private readonly IMapper _mapper;
     private readonly ITicketTypeRepository _ticketTypeRepository;
-    private readonly IAppLoger<UpdateTicketTypeCommandHandler> _logger;
+    private readonly IAppLogger<UpdateTicketTypeCommandHandler> _logger;
 
-    public UpdateTicketTypeCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLoger<UpdateTicketTypeCommandHandler> loger)
+    public UpdateTicketTypeCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLogger<UpdateTicketTypeCommandHandler> loger)
     {
         _mapper = mapper;
         _ticketTypeRepository = ticketTypeRepository;

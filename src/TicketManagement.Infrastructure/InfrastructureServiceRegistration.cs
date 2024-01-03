@@ -15,7 +15,7 @@ public static class InfrastructureServiceRegistration
     {
         services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
         services.AddTransient<IEmailSender, EmailSender>();
-        services.AddScoped(typeof(IAppLoger<>), typeof(LoggerAdapter<>));
+        services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
         return services;
     }

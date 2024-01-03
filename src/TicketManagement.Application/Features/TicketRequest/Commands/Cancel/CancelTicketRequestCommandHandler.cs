@@ -12,11 +12,11 @@ public class CancelTicketRequestCommandHandler : IRequestHandler<CancelTicketReq
     private readonly ITicketRequestRepository _ticketRequestRepository;
     private readonly ITicketAllocationRepository _ticketAllocationRepository;
     private readonly IEmailSender _emailSender;
-    private readonly IAppLoger<CancelTicketRequestCommandHandler> _appLoger;
+    private readonly IAppLogger<CancelTicketRequestCommandHandler> _appLoger;
 
     public CancelTicketRequestCommandHandler(ITicketRequestRepository ticketRequestRepository,
         ITicketAllocationRepository ticketAllocationRepository, IEmailSender emailSender,
-        IAppLoger<CancelTicketRequestCommandHandler> appLoger)
+        IAppLogger<CancelTicketRequestCommandHandler> appLoger)
     {
         _ticketRequestRepository = ticketRequestRepository;
         _ticketAllocationRepository = ticketAllocationRepository;

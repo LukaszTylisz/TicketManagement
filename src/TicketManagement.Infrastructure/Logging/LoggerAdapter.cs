@@ -3,7 +3,7 @@ using TicketManagement.Application.Contracts.Logging;
 
 namespace TicketManagement.Infrastructure.Logging;
 
-public class LoggerAdapter<T> : IAppLoger<T>
+public class LoggerAdapter<T> : IAppLogger<T>
 {
     private readonly ILogger<T> _logger;
 

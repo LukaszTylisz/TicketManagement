@@ -1,0 +1,30 @@
+﻿
+
+<EditForm Model="@TicketType" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Name:</label>
+            <div>
+                <InputText @bind-Value="@TicketType.Name" class="form-control" />
+                <ValidationMessage For="@(() => TicketType.Name)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Default Days:</label>
+            <div>
+                <InputNumber @bind-Value="@TicketType.DefaultDays" class="form-control" />
+                <ValidationMessage For="@(() => TicketType.DefaultDays)" />
+            </div>
+        </div>
+    </fieldset>
+    @if (!Disabled)
+        {
+            <button type="submit" class="btn btn-success btn-block">
+                @ButtonText
+            </button>
+        }
+        <BackToList Target="tickettypes" />
+</EditForm>

@@ -9,9 +9,9 @@ public class GetTicketTypeQueryHandler : IRequestHandler<GetTicketTypeQuery, Lis
 {
     private readonly IMapper _mapper;
     private readonly ITicketTypeRepository _ticketTypeRepository;
-    private readonly IAppLoger<GetTicketTypeQueryHandler> _loger;
+    private readonly IAppLogger<GetTicketTypeQueryHandler> _loger;
 
-    public GetTicketTypeQueryHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLoger<GetTicketTypeQueryHandler> loger)
+    public GetTicketTypeQueryHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLogger<GetTicketTypeQueryHandler> loger)
     {
         _mapper = mapper;
         _ticketTypeRepository = ticketTypeRepository;
@@ -19,10 +19,8 @@ public class GetTicketTypeQueryHandler : IRequestHandler<GetTicketTypeQuery, Lis
     }
     public async Task<List<TicketTypeDto>> Handle(GetTicketTypeQuery request, CancellationToken cancellationToken)
     {
-        // Query to Database
         var ticketTypes = await _ticketTypeRepository.GetAsync();
         
-        // Convert data objects to Dto object
         var data = _mapper.Map<List<TicketTypeDto>>(ticketTypes);
         
         _loger.LogInformation("Ticket types were retreived successfully");

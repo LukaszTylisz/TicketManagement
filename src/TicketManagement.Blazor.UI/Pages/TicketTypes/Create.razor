@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Authorization
+
+@page "/tickettypes/create/"
+@attribute [Authorize(Roles ="Administrator")]
+<h3>Create Ticket Type</h3>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<FormComponent ButtonText="Create" TicketType="ticketType" OnValidSubmit="@CreateTicketType" />

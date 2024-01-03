@@ -17,11 +17,11 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
     private readonly ITicketAllocationRepository _ticketAllocationRepository;
     private readonly IEmailSender _emailSender;
     private readonly IUserService _userService;
-    private readonly IAppLoger<CreateTicketRequestCommandHandler> _appLoger;
+    private readonly IAppLogger<CreateTicketRequestCommandHandler> _appLoger;
 
     public CreateTicketRequestCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository,
         ITicketRequestRepository ticketRequestRepository, ITicketAllocationRepository ticketAllocationRepository,
-        IEmailSender emailSender, IUserService userService, IAppLoger<CreateTicketRequestCommandHandler> appLoger)
+        IEmailSender emailSender, IUserService userService, IAppLogger<CreateTicketRequestCommandHandler> appLoger)
     {
         _mapper = mapper;
         _ticketTypeRepository = ticketTypeRepository;
