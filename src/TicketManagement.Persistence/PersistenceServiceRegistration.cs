@@ -1,7 +1,7 @@
-﻿using TicketManagement.Application.Contracts.Persistance;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TicketManagement.Application.Contracts.Persistance;
 using TicketManagement.Persistence.DatabaseContext;
 using TicketManagement.Persistence.Repositories;
 
@@ -14,10 +14,11 @@ public static class PersistenceServiceRegistration
         services.AddDbContext<TicketManagementDatabaseContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("TicketDatabaseConnectionString")));
 
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-        services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-        services.AddScoped<ITicketAllocationRepository, TicketAllocationRepository>();
-        services.AddScoped<ITicketRequestRepository, TicketRequestRepository>();
+        services
+            .AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>))
+            .AddScoped<ITicketTypeRepository, TicketTypeRepository>()
+            .AddScoped<ITicketAllocationRepository, TicketAllocationRepository>()
+            .AddScoped<ITicketRequestRepository, TicketRequestRepository>();
 
         return services;
     }
