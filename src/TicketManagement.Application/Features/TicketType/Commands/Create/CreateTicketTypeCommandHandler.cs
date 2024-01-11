@@ -23,7 +23,7 @@ public class CreateTicketTypeCommandHandler : IRequestHandler<CreateTicketTypeCo
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.Errors.Any())
-            throw new BadRequestException("Invalid LeadType", validationResult);
+            throw new BadRequestException("Invalid TicketType", validationResult);
 
         // convert to domain entity object
         var ticketTypeToCreate = _mapper.Map<Domain.TicketType>(request);
