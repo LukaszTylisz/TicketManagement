@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TicketManagement.Blazor.UI.Models.TicketTypes;
 
-public class TicketTypeVM
+public class TicketTypeVm
 {
     public int Id { get; set; }
     

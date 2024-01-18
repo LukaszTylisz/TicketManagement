@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Features.TicketRequest.Shared;
 
 namespace TicketManagement.Application.Features.TicketRequest.Commands.Create;

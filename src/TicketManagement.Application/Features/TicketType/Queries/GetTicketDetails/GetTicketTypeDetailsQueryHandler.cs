@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Exceptions;
 
 namespace TicketManagement.Application.Features.TicketType.Queries.GetTicketDetails;
@@ -19,7 +19,7 @@ public class GetTicketTypeDetailsQueryHandler : IRequestHandler<GetTicketTypeDet
     {
         var ticketType = await _ticketTypeRepository.GetByIdAsync(request.id) ??
                          throw new NotFoundException(nameof(TicketType), request.id);
-        
+
         var data = _mapper.Map<TicketTypeDetailsDto>(ticketType);
 
         return data;

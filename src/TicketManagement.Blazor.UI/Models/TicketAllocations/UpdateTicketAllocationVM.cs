@@ -10,7 +10,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketAllocations
         [Display(Name = "Number Of Days")]
         [Range(1, 50, ErrorMessage = "Enter Valid Number")]
         public int NumberOfDays { get; set; }
-        public TicketTypeVM TicketType { get; set; }
+        public TicketTypeVm TicketType { get; set; }
 
     }
 }

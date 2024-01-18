@@ -2,7 +2,7 @@
 using FluentValidation;
 using MediatR;
 using TicketManagement.Application.Contracts.Logging;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Exceptions;
 
 namespace TicketManagement.Application.Features.TicketType.Commands.Update;

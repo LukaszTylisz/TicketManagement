@@ -13,7 +13,7 @@ public partial class Index
     public ITicketTypeService TicketTypeService { get; set; }
     [Inject]
     public ITicketAllocationService TicketAllocationService { get; set; }
-    public List<TicketTypeVM> TicketTypes {  get; private set; }
+    public List<TicketTypeVm> TicketTypes {  get; private set; }
     public string Message { get; set; } = string.Empty;
     protected void CreateTicketType()
     {

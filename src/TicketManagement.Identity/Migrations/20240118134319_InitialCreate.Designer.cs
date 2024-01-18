@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketManagement.Identity.DbContext;
 
@@ -11,9 +12,11 @@ using TicketManagement.Identity.DbContext;
 namespace TicketManagement.Identity.Migrations
 {
     [DbContext(typeof(TicketManagementDatabaseIdentityDbContext))]
-    partial class TicketManagementDatabaseIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240118134319_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

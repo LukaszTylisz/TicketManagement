@@ -2,7 +2,7 @@
 using Moq;
 using Shouldly;
 using TicketManagement.Application.Contracts.Logging;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Features.TicketType.Queries.GetAllTickets;
 using TicketManagement.Application.MappingProfiles;
 using TicketManagement.Application.UnitTests.Mocks;

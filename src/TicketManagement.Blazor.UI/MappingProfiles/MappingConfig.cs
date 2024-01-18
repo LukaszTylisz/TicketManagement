@@ -11,10 +11,10 @@ public class MappingConfig : Profile
 {
     public MappingConfig()
     {
-        CreateMap<TicketTypeDto, TicketTypeVM>().ReverseMap();
-        CreateMap<TicketTypeDetailsDto, TicketTypeVM>();
-        CreateMap<CreateTicketTypeCommand, TicketTypeVM>().ReverseMap();
-        CreateMap<UpdateTicketTypeCommand, TicketTypeVM>().ReverseMap();
+        CreateMap<TicketTypeDto, TicketTypeVm>().ReverseMap();
+        CreateMap<TicketTypeDetailsDto, TicketTypeVm>();
+        CreateMap<CreateTicketTypeCommand, TicketTypeVm>().ReverseMap();
+        CreateMap<UpdateTicketTypeCommand, TicketTypeVm>().ReverseMap();
 
         CreateMap<TicketRequestListDto, TicketRequestVm>()
             .ForMember(q => q.DateRequested, opt => opt.MapFrom(x => x.DateRequested.DateTime))
@@ -26,6 +26,7 @@ public class MappingConfig : Profile
             .ForMember(q => q.StartDate, opt => opt.MapFrom(x => x.StartDate.DateTime))
             .ForMember(q => q.EndDate, opt => opt.MapFrom(x => x.EndDate.DateTime))
             .ReverseMap();
+        
         CreateMap<CreateTicketRequestCommand, TicketRequestVm>().ReverseMap();
         CreateMap<UpdateTicketRequestCommand, TicketRequestVm>().ReverseMap();
 

@@ -12,7 +12,7 @@ namespace TicketManagement.Blazor.UI.Pages.TicketTypes
         [Parameter]
         public int id { get; set; }
 
-        TicketTypeVM ticketType = new TicketTypeVM();
+        TicketTypeVm ticketType = new TicketTypeVm();
 
         protected async override Task OnParametersSetAsync()
         {

@@ -1,10 +1,9 @@
+using Serilog;
 using TicketManagement.Application;
 using TicketManagement.Identity;
 using TicketManagement.Infrastructure;
-using TicketManagement.Persistence;
-using Microsoft.AspNetCore.Diagnostics;
-using Serilog;
 using TicketManagement.Middleware;
+using TicketManagement.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿using TicketManagement.Application.Contracts.Persistance;
-using TicketManagement.Domain;
+﻿using TicketManagement.Domain;
 using Microsoft.EntityFrameworkCore;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Persistence.DatabaseContext;
 
 namespace TicketManagement.Persistence.Repositories;

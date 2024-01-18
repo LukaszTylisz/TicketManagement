@@ -17,21 +17,21 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
         _localStorageService = localStorage;
     }
 
-    public async Task<List<TicketTypeVM>> GetTicketTypes()
+    public async Task<List<TicketTypeVm>> GetTicketTypes()
     {
         await AddBearerToken();
         var ticketTypes = await _client.TicketTypesAllAsync();
-        return _mapper.Map<List<TicketTypeVM>>(ticketTypes);
+        return _mapper.Map<List<TicketTypeVm>>(ticketTypes);
     }
 
-    public async Task<TicketTypeVM> GetTicketTypeDetails(int id)
+    public async Task<TicketTypeVm> GetTicketTypeDetails(int id)
     {
         await AddBearerToken();
         var ticketType = await _client.TicketTypesGETAsync(id);
-        return _mapper.Map<TicketTypeVM>(ticketType);
+        return _mapper.Map<TicketTypeVm>(ticketType);
     }
 
-    public async Task<Response<Guid>> CreateTicketType(TicketTypeVM ticketType)
+    public async Task<Response<Guid>> CreateTicketType(TicketTypeVm ticketType)
     {
         try
         {
@@ -49,7 +49,7 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
         }
     }
 
-    public async Task<Response<Guid>> UpdateTicketType(int id, TicketTypeVM ticketType)
+    public async Task<Response<Guid>> UpdateTicketType(int id, TicketTypeVm ticketType)
     {
         try
         {

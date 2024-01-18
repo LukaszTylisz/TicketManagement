@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using TicketManagement.Application.Contracts.Identity;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Exceptions;
 
 namespace TicketManagement.Application.Features.TicketRequest.Queries.GetTicketRequestDetails;

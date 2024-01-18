@@ -10,7 +10,7 @@ public partial class Create
     [Inject] ITicketRequestService ticketRequestService { get; set; }
     [Inject] NavigationManager NavigationManager { get; set; }
     TicketRequestVm TicketRequest { get; set; } = new TicketRequestVm();
-    List<TicketTypeVM> ticketTypesVMs = new List<TicketTypeVM>();
+    List<TicketTypeVm> ticketTypesVMs = new List<TicketTypeVm>();
 
     protected override async Task OnInitializedAsync()
     {

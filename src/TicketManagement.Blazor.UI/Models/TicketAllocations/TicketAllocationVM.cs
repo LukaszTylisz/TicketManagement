@@ -12,7 +12,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketAllocations
         public DateTime DateCreated { get; set; }
         public int Period { get; set; }
 
-        public TicketTypeVM TicketType { get; set; }
+        public TicketTypeVm TicketType { get; set; }
         public int TicketTypeId { get; set; }
     }
 }

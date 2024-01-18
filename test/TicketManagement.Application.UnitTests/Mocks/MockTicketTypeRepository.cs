@@ -1,5 +1,5 @@
 ﻿using Moq;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Domain;
 
 namespace TicketManagement.Application.UnitTests.Mocks;

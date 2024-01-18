@@ -11,3 +11,5 @@ riderModule.iml
 /.vs/TicketManagement/FileContentIndex
 /.vs/TicketManagement/v17
 /.vs
+*.user
+/src/TicketManagement.Api/logs

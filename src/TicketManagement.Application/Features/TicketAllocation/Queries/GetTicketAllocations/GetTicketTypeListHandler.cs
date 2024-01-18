@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 
 namespace TicketManagement.Application.Features.TicketAllocation.Queries.GetTicketAllocations;
 

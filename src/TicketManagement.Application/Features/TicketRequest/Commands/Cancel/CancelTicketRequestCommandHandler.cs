@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using TicketManagement.Application.Contracts.Email;
 using TicketManagement.Application.Contracts.Logging;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 using TicketManagement.Application.Exceptions;
 using TicketManagement.Application.Models.Email;
 

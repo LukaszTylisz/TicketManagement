@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 
 namespace TicketManagement.Application.Features.TicketAllocation.Commands.Update;
 

@@ -14,7 +14,7 @@ public partial class Create
     IToastService toastService { get; set; }
     public string Message { get; private set; }
 
-    TicketTypeVM ticketType = new TicketTypeVM();
+    TicketTypeVm ticketType = new TicketTypeVm();
     async Task CreateTicketType()
     {
         var response = await _client.CreateTicketType(ticketType);

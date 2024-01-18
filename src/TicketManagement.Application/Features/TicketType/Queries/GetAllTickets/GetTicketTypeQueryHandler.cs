@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using TicketManagement.Application.Contracts.Logging;
-using TicketManagement.Application.Contracts.Persistance;
+using TicketManagement.Application.Contracts.Persistence;
 
 namespace TicketManagement.Application.Features.TicketType.Queries.GetAllTickets;
 
@@ -9,13 +9,13 @@ public class GetTicketTypeQueryHandler : IRequestHandler<GetTicketTypeQuery, Lis
 {
     private readonly IMapper _mapper;
     private readonly ITicketTypeRepository _ticketTypeRepository;
-    private readonly IAppLogger<GetTicketTypeQueryHandler> _loger;
+    private readonly IAppLogger<GetTicketTypeQueryHandler> _logger;
 
-    public GetTicketTypeQueryHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLogger<GetTicketTypeQueryHandler> loger)
+    public GetTicketTypeQueryHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository, IAppLogger<GetTicketTypeQueryHandler> logger)
     {
         _mapper = mapper;
         _ticketTypeRepository = ticketTypeRepository;
-        _loger = loger;
+        _logger = logger;
     }
     public async Task<List<TicketTypeDto>> Handle(GetTicketTypeQuery request, CancellationToken cancellationToken)
     {
@@ -23,7 +23,7 @@ public class GetTicketTypeQueryHandler : IRequestHandler<GetTicketTypeQuery, Lis
         
         var data = _mapper.Map<List<TicketTypeDto>>(ticketTypes);
         
-        _loger.LogInformation("Ticket types were retreived successfully");
+        _logger.LogInformation("Ticket types were retreived successfully");
 
         return data;
     }

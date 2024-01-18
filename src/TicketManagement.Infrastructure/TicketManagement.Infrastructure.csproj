@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <RootNamespace>TicketManagement.Infrastructure</RootNamespace>
     </PropertyGroup>
 
@@ -13,7 +13,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
-      <PackageReference Include="SendGrid" Version="9.28.1" />
+      <PackageReference Include="SendGrid" Version="9.29.1" />
     </ItemGroup>
 
     <ItemGroup>

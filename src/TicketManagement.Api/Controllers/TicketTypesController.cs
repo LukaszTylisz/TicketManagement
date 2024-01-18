@@ -22,17 +22,17 @@ public class TicketTypesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<TicketTypeDto>> Get()
+    public async Task<ActionResult<List<TicketTypeDto>>> Get()
     {
         var ticketTypes = await _mediator.Send(new GetTicketTypeQuery());
-        return ticketTypes;
+        return Ok(ticketTypes);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<TicketTypeDetailsDto>> Get(int id)
     {
         var ticketTypes = await _mediator.Send(new GetTicketTypeDetailsQuery(id));
-        return ticketTypes;
+        return Ok(ticketTypes);
     }
 
     [HttpPost]

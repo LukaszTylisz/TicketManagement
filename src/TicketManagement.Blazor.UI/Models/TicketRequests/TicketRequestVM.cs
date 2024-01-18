@@ -17,7 +17,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketRequests
         public bool? Approved { get; set; }
 
         public bool Cancelled { get; set; }
-        public TicketTypeVM TicketType { get; set; } = new TicketTypeVM();
+        public TicketTypeVm TicketType { get; set; } = new TicketTypeVm();
         public ClientVm Employee { get; set; } = new ClientVm();
 
         [Display(Name = "Start Date")]

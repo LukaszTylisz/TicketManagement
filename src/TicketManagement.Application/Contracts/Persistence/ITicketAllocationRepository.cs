@@ -1,6 +1,6 @@
 ﻿using TicketManagement.Domain;
 
-namespace TicketManagement.Application.Contracts.Persistance;
+namespace TicketManagement.Application.Contracts.Persistence;
 
 public interface ITicketAllocationRepository : IGenericRepository<TicketAllocation>
 {

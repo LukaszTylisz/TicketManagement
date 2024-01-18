@@ -1,6 +1,6 @@
 ﻿using TicketManagement.Domain.Common;
 
-namespace TicketManagement.Application.Contracts.Persistance;
+namespace TicketManagement.Application.Contracts.Persistence;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {

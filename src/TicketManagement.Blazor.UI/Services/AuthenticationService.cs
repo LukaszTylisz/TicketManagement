@@ -10,8 +10,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
 {
     private readonly AuthenticationStateProvider _authenticationStateProvider;
 
-    public AuthenticationService(IClient client,
-        ILocalStorageService localStorage,
+    public AuthenticationService(IClient client, ILocalStorageService localStorage,
         AuthenticationStateProvider authenticationStateProvider) : base(client, localStorage)
     {
         _authenticationStateProvider = authenticationStateProvider;
@@ -26,7 +25,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
             if (authenticationResponse.Token != string.Empty)
             {
                 await _localStorage.SetItemAsync("token", authenticationResponse.Token);
-                
+
                 await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedIn();
                 return true;
             }
@@ -48,7 +47,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
         string password)
     {
         RegistrationRequest registrationRequest = new RegistrationRequest()
-            { FirstName = firstName, LastName = lastName, Email = email, UserName = userName, Password = password };
+        { FirstName = firstName, LastName = lastName, Email = email, UserName = userName, Password = password };
         var response = await _client.RegisterAsync(registrationRequest);
 
         if (!string.IsNullOrEmpty(response.UserId))
