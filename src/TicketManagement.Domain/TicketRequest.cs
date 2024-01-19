@@ -12,5 +12,5 @@ public class TicketRequest : BaseEntity
     public string? TicketComments { get; set; }
     public bool? Resolved { get; set; }
     public bool Cancelled { get; set; }
-    public string RequestingClientId { get; set; }
+    public string RequestingClientId { get; set; } = string.Empty;
 }

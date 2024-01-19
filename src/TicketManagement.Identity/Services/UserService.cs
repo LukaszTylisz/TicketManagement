@@ -1,6 +1,6 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using TicketManagement.Application.Contracts.Identity;
 using TicketManagement.Application.Models.Identity;
 using TicketManagement.Identity.Models;

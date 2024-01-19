@@ -43,14 +43,14 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
         var clientId = _userService.UserId;
 
         var allocation = await _ticketAllocationRepository.GetUserAllocations(clientId, request.TicketTypeId);
-        
+
         if (allocation is null)
         {
             validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(nameof(request.TicketTypeId),
                 "You do not have any allocations for this ticket type."));
             throw new BadRequestException("Invalid Ticket Request", validationResult);
         }
-        
+
         int daysRequested = (int)(request.EndDate - request.StartDate).TotalDays;
         if (daysRequested > allocation.NumberOfDays)
         {
@@ -63,12 +63,12 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
         ticketRequest.RequestingClientId = clientId;
         ticketRequest.DateRequested = DateTime.Now;
         await _ticketRequestRepository.CreateAsync(ticketRequest);
-        
+
         try
         {
             var email = new EmailMessage
             {
-                To = string.Empty, /* Get email from employee record */
+                To = string.Empty,
                 Body = $"Your ticket request for {request.StartDate:D} to {request.EndDate:D} " +
                        $"has been submitted successfully.",
                 Subject = "Ticket Request Submitted"
@@ -80,7 +80,7 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
         {
             _appLoger.LogWarning(ex.Message);
         }
-        
+
         return Unit.Value;
     }
 }

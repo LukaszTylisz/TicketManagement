@@ -11,12 +11,12 @@ namespace TicketManagement.Identity.Configurations
             builder.HasData(
                 new IdentityUserRole<string>
                 {
-                    RoleId = "cbc43a8e-f7bb-4445-baaf-1add431ffbbf",
+                    RoleId = "CB53D9FE-5115-4B61-8D4B-2345F92A5761",
                     UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9"
                 },
                 new IdentityUserRole<string>
                 {
-                    RoleId = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
+                    RoleId = "96F9A056-534F-4147-9A68-FF8C2A08E139",
                     UserId = "9e224968-33e4-4652-b7b7-8574d048cdb9"
                 }
             );

@@ -10,5 +10,5 @@ public class TicketAllocation : BaseEntity
     public int TicketTypeId { get; set; }
 
     public int Period { get; set; }
-    public string ClientId { get; set; }
+    public string ClientId { get; set; } = string.Empty;
 }

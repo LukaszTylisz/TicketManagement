@@ -62,9 +62,9 @@ public class TicketRequestService : BaseHttpService, ITicketRequestService
         }
     }
 
-    public Task DeleteTicketRequest(int id)
+    public async Task DeleteTicketRequest(int id)
     {
-        throw new NotImplementedException();
+        await _client.TicketRequestDELETEAsync(id);
     }
 
     public async Task<AdminTicketRequestViewVM> GetAdminTicketequestList()

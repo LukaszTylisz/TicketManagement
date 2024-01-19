@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using TicketManagement.Application.Contracts.Identity;
 using TicketManagement.Application.Exceptions;
 using TicketManagement.Application.Models.Identity;
@@ -30,16 +30,13 @@ public class AuthService : IAuthService
         var user = await _userManager.FindByEmailAsync(request.Email);
 
         if (user == null)
-        {
             throw new NotFoundException($"User with {request.Email} not found.", request.Email);
-        }
 
         var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
         if (result.Succeeded == false)
-        {
             throw new BadRequestException($"Credentials for '{request.Email} aren't valid'.");
-        }
+
 
         JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
 
@@ -101,7 +98,7 @@ public class AuthService : IAuthService
             .Union(userCaims)
             .Union(roleClaims);
 
-        var symmetricSecurityKey = new SymmetricSecurityKey(_jwtSettings.Key);
+        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
 
         var signInCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
@@ -109,7 +106,7 @@ public class AuthService : IAuthService
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
             claims: claims,
-            expires: DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes),
+            expires: DateTime.Now.ToLocalTime().AddMinutes(_jwtSettings.DurationInMinutes),
             signingCredentials: signInCredentials);
         return jwtSecurityToken;
     }
