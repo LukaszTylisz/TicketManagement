@@ -23,10 +23,10 @@ public class UserService : IUserService
         get => _contextAccessor.HttpContext?.User?.FindFirstValue("uid");
     }
 
-    public async Task<Client> GetClient(string userId)
+    public async Task<Clients> GetClient(string userId)
     {
         var client = await _userManager.FindByIdAsync(userId);
-        return new Client
+        return new Clients
         {
             Email = client.Email,
             Id = client.Id,
@@ -35,10 +35,10 @@ public class UserService : IUserService
         };
     }
 
-    public async Task<List<Client>> GetClients()
+    public async Task<List<Clients>> GetClients()
     {
         var clients = await _userManager.GetUsersInRoleAsync("Client");
-        return clients.Select(q => new Client
+        return clients.Select(q => new Clients
         {
             Id = q.Id,
             Email = q.Email,

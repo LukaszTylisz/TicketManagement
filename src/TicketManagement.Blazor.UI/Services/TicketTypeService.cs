@@ -9,12 +9,10 @@ namespace TicketManagement.Blazor.UI.Services;
 public class TicketTypeService : BaseHttpService, ITicketTypeService
 {
     private readonly IMapper _mapper;
-    private readonly ILocalStorageService _localStorageService;
 
     public TicketTypeService(IClient client, IMapper mapper, ILocalStorageService localStorage) : base(client, localStorage)
     {
         _mapper = mapper;
-        _localStorageService = localStorage;
     }
 
     public async Task<List<TicketTypeVm>> GetTicketTypes()
@@ -45,7 +43,8 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
         }
         catch (ApiException ex)
         {
-            return ConvertApiExceptions <Guid>( ex);
+
+            return ConvertApiExceptions<Guid>(ex);
         }
     }
 
@@ -56,6 +55,7 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
             await AddBearerToken();
             var updateTicketTypeCommand = _mapper.Map<UpdateTicketTypeCommand>(ticketType);
             await _client.TicketTypesPUTAsync(id.ToString(), updateTicketTypeCommand);
+
             return new Response<Guid>()
             {
                 Success = true,
@@ -63,7 +63,7 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
         }
         catch (ApiException ex)
         {
-            return ConvertApiExceptions <Guid>( ex);
+            return ConvertApiExceptions<Guid>(ex);
         }
     }
 
@@ -73,14 +73,14 @@ public class TicketTypeService : BaseHttpService, ITicketTypeService
         {
             await AddBearerToken();
             await _client.TicketTypesDELETEAsync(id);
-            return new Response<Guid>() 
+            return new Response<Guid>()
             {
                 Success = true,
             };
         }
         catch (ApiException ex)
         {
-            return ConvertApiExceptions <Guid>( ex);
+            return ConvertApiExceptions<Guid>(ex);
         }
     }
 }

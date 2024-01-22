@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TicketManagement.Blazor.UI.Models.TicketTypes;
 
-namespace TicketManagement.Blazor.UI.Models.TicketAllocations
+namespace HR.LeaveManagement.BlazorUI.Models.LeaveAllocations
 {
     public class UpdateTicketAllocationVm
     {
@@ -11,6 +11,5 @@ namespace TicketManagement.Blazor.UI.Models.TicketAllocations
         [Range(1, 50, ErrorMessage = "Enter Valid Number")]
         public int NumberOfDays { get; set; }
         public TicketTypeVm TicketType { get; set; }
-
     }
 }

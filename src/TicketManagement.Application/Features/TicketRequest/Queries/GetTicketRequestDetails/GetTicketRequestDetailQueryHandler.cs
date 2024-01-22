@@ -29,7 +29,7 @@ public class GetTicketRequestDetailQueryHandler : IRequestHandler<GetTicketReque
         if (ticketRequest == null)
             throw new NotFoundException(nameof(Domain.TicketType), request.Id);
 
-        ticketRequest.Client = await _userService.GetClient(ticketRequest.RequestingClientId);
+        ticketRequest.Clients = await _userService.GetClient(ticketRequest.RequestingClientId);
 
         return ticketRequest;
     }

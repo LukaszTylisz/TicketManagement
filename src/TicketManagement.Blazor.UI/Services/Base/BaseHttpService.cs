@@ -1,5 +1,5 @@
-﻿using System.Net.Http.Headers;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
+using System.Net.Http.Headers;
 
 namespace TicketManagement.Blazor.UI.Services.Base;
 
@@ -23,7 +23,7 @@ public class BaseHttpService
             _ => new Response<Guid> { Message = "Something went wrong, please try again later", Success = false }
         };
     }
-    
+
     protected async Task AddBearerToken()
     {
         if (await _localStorage.ContainKeyAsync("token"))

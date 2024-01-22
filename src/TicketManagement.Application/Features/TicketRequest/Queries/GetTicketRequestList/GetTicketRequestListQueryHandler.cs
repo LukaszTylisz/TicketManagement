@@ -34,7 +34,7 @@ public class GetTicketRequestListQueryHandler : IRequestHandler<GetTicketRequest
             requests = _mapper.Map<List<TicketRequestListDto>>(ticketRequests);
             foreach (var req in requests)
             {
-                req.Client = client;
+                req.Clients = client;
             }
         }
         else
@@ -43,7 +43,7 @@ public class GetTicketRequestListQueryHandler : IRequestHandler<GetTicketRequest
             requests = _mapper.Map<List<TicketRequestListDto>>(ticketRequests);
             foreach (var req in requests)
             {
-                req.Client = await _userService.GetClient(req.RequestingClientId);
+                req.Clients = await _userService.GetClient(req.RequestingClientId);
             }
         }
 

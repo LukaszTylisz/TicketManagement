@@ -18,7 +18,7 @@ namespace TicketManagement.Blazor.UI.Pages.TicketTypes
 
         TicketTypeVm ticketType = new TicketTypeVm();
 
-        protected async Task OnParametersSetAsync()
+        protected override async Task OnParametersSetAsync()
         {
             ticketType = await _client.GetTicketTypeDetails(id);
         }

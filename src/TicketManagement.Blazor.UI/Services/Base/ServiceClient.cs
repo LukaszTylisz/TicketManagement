@@ -2036,22 +2036,22 @@ namespace TicketManagement.Blazor.UI.Services.Base
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
 
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string Id { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
 
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string Email { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("firstname")]
 
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string Firstname { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("lastname")]
 
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public string Lastname { get; set; }
 
     }
@@ -2269,10 +2269,10 @@ namespace TicketManagement.Blazor.UI.Services.Base
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public int Id { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("client")]
+        [System.Text.Json.Serialization.JsonPropertyName("clients")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public Client Client { get; set; }
+        public Clients Clients { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("startDate")]
 
@@ -2335,10 +2335,10 @@ namespace TicketManagement.Blazor.UI.Services.Base
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public int Id { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("client")]
+        [System.Text.Json.Serialization.JsonPropertyName("clients")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public Client Client { get; set; }
+        public Clients Clients { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("requestingClientId")]
 

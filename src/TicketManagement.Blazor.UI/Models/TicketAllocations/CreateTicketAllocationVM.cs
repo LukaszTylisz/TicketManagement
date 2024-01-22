@@ -1,4 +1,4 @@
-﻿namespace TicketManagement.Blazor.UI.Models.TicketAllocations
+﻿namespace HR.LeaveManagement.BlazorUI.Models.LeaveAllocations
 {
     public class CreateTicketAllocationVm
     {

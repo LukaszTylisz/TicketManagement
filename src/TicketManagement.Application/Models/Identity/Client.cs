@@ -1,6 +1,6 @@
 ﻿namespace TicketManagement.Application.Models.Identity
 {
-    public class Client
+    public class Clients
     {
         public string Id { get; set; }
         public string Email { get; set; }

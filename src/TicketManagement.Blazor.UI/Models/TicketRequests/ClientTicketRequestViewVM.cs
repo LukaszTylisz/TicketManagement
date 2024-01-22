@@ -2,7 +2,7 @@
 
 namespace TicketManagement.Blazor.UI.Models.TicketRequests
 {
-    public class ClientTicketRequestViewVm
+    public class ClientTicketRequestViewVM
     {
         public List<TicketAllocationVm> TicketAllocations { get; set; } = new List<TicketAllocationVm>();
         public List<TicketRequestVm> TicketRequests { get; set; } = new List<TicketRequestVm>();

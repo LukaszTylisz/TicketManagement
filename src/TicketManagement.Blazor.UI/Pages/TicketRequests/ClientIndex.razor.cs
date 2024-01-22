@@ -5,12 +5,12 @@ using TicketManagement.Blazor.UI.Models.TicketRequests;
 
 namespace TicketManagement.Blazor.UI.Pages.TicketRequests
 {
-    public partial class EmployeeIndex
+    public partial class ClientIndex
     {
         [Inject] ITicketRequestService ticketRequestService { get; set; }
         [Inject] IJSRuntime js { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
-        public ClientTicketRequestViewVm Model { get; set; } = new();
+        public ClientTicketRequestViewVM Model { get; set; } = new();
         public string Message { get; set; } = string.Empty;
 
         protected async override Task OnInitializedAsync()

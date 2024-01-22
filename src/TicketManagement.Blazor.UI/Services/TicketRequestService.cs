@@ -88,11 +88,11 @@ public class TicketRequestService : BaseHttpService, ITicketRequestService
         return _mapper.Map<TicketRequestVm>(ticketRequest);
     }
 
-    public async Task<ClientTicketRequestViewVm> GetUserTicketRequests()
+    public async Task<ClientTicketRequestViewVM> GetUserTicketRequests()
     {
         var ticketRequests = await _client.TicketRequestAllAsync(isLoggedInUser: true);
         var allocations = await _client.TicketAllocationAllAsync(isLoggedInUser: true);
-        var model = new ClientTicketRequestViewVm
+        var model = new ClientTicketRequestViewVM
         {
             TicketAllocations = _mapper.Map<List<TicketAllocationVm>>(allocations),
             TicketRequests = _mapper.Map<List<TicketRequestVm>>(ticketRequests)

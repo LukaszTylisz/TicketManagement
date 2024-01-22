@@ -6,7 +6,7 @@ namespace TicketManagement.Application.Features.TicketRequest.Queries.GetTicketR
 public class TicketRequestListDto
 {
     public int Id { get; set; }
-    public Client Client { get; set; }
+    public Clients Clients { get; set; }
     public string RequestingClientId { get; set; }
     public TicketTypeDto TicketType { get; set; }
     public DateTime StartDate { get; set; }

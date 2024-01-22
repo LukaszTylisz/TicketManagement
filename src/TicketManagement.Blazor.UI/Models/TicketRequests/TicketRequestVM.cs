@@ -34,7 +34,7 @@ namespace TicketManagement.Blazor.UI.Models.TicketRequests
 
         [Display(Name = "Comments")]
         [MaxLength(300)]
-        public string? RequestComments { get; set; }
+        public string RequestComments { get; set; }
 
     }
 }

@@ -6,7 +6,7 @@ namespace TicketManagement.Blazor.UI.Contracts;
 public interface ITicketRequestService
 {
     Task<AdminTicketRequestViewVM> GetAdminTicketequestList();
-    Task<ClientTicketRequestViewVm> GetUserTicketRequests();
+    Task<ClientTicketRequestViewVM> GetUserTicketRequests();
     Task<Response<Guid>> CreateTicketRequest(TicketRequestVm TicketRequest);
     Task<TicketRequestVm> GetTicketRequest(int id);
     Task DeleteTicketRequest(int id);
