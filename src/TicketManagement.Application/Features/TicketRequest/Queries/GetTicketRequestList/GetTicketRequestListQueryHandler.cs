@@ -5,33 +5,25 @@ using TicketManagement.Application.Contracts.Persistence;
 
 namespace TicketManagement.Application.Features.TicketRequest.Queries.GetTicketRequestList;
 
-public class GetTicketRequestListQueryHandler : IRequestHandler<GetTicketRequestListQuery, List<TicketRequestListDto>>
+public class GetTicketRequestListQueryHandler(
+    ITicketRequestRepository ticketRequestRepository,
+    IMapper mapper,
+    IUserService userService)
+    : IRequestHandler<GetTicketRequestListQuery, List<TicketRequestListDto>>
 {
-    private readonly ITicketRequestRepository _ticketRequestRepository;
-    private readonly IMapper _mapper;
-    private readonly IUserService _userService;
-
-    public GetTicketRequestListQueryHandler(ITicketRequestRepository ticketRequestRepository, IMapper mapper,
-        IUserService userService)
-    {
-        _ticketRequestRepository = ticketRequestRepository;
-        _mapper = mapper;
-        this._userService = userService;
-    }
-
     public async Task<List<TicketRequestListDto>> Handle(GetTicketRequestListQuery request,
         CancellationToken cancellationToken)
     {
-        var ticketRequests = new List<Domain.TicketRequest>();
-        var requests = new List<TicketRequestListDto>();
+        List<Domain.TicketRequest> ticketRequests;
+        List<TicketRequestListDto> requests;
 
         if (request.IsLoggedInUser)
         {
-            var userId = _userService.UserId;
-            ticketRequests = await _ticketRequestRepository.GetTicketWithDetails(userId);
+            var userId = userService.UserId;
+            ticketRequests = await ticketRequestRepository.GetTicketWithDetails(userId);
 
-            var client = await _userService.GetClient(userId);
-            requests = _mapper.Map<List<TicketRequestListDto>>(ticketRequests);
+            var client = await userService.GetClient(userId);
+            requests = mapper.Map<List<TicketRequestListDto>>(ticketRequests);
             foreach (var req in requests)
             {
                 req.Clients = client;
@@ -39,11 +31,11 @@ public class GetTicketRequestListQueryHandler : IRequestHandler<GetTicketRequest
         }
         else
         {
-            ticketRequests = await _ticketRequestRepository.GetTicketWithDetails();
-            requests = _mapper.Map<List<TicketRequestListDto>>(ticketRequests);
+            ticketRequests = await ticketRequestRepository.GetTicketWithDetails();
+            requests = mapper.Map<List<TicketRequestListDto>>(ticketRequests);
             foreach (var req in requests)
             {
-                req.Clients = await _userService.GetClient(req.RequestingClientId);
+                req.Clients = await userService.GetClient(req.RequestingClientId);
             }
         }
 

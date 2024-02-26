@@ -5,22 +5,13 @@ using TicketManagement.Models;
 
 namespace TicketManagement.Middleware;
 
-public class ExceptionMiddleware
+public class ExceptionMiddleware(RequestDelegate next)
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<ExceptionMiddleware> _logger;
-
-    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
-    {
-        _next = next;
-        _logger = logger;
-    }
-
     public async Task InvokeAsync(HttpContext httpContext)
     {
         try
         {
-            await _next(httpContext);
+            await next(httpContext);
         }
         catch (Exception ex)
         {
@@ -46,14 +37,14 @@ public class ExceptionMiddleware
                     Errors = badRequestException.ValidationErrors
                 };
                 break;
-            case NotFoundException NotFound:
+            case NotFoundException notFound:
                 statusCode = HttpStatusCode.NotFound;
                 problem = new CustomProblemDetails
                 {
-                    Title = NotFound.Message,
+                    Title = notFound.Message,
                     Status = (int)statusCode,
                     Type = nameof(NotFoundException),
-                    Detail = NotFound.InnerException?.Message,
+                    Detail = notFound.InnerException?.Message,
                 };
                 break;
             default:

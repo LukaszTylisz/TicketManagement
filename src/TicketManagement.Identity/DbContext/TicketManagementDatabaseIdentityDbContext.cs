@@ -4,12 +4,10 @@ using TicketManagement.Identity.Models;
 
 namespace TicketManagement.Identity.DbContext;
 
-public class TicketManagementDatabaseIdentityDbContext : IdentityDbContext<ApplicationUser>
+public class TicketManagementDatabaseIdentityDbContext(
+    DbContextOptions<TicketManagementDatabaseIdentityDbContext> options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
-    public TicketManagementDatabaseIdentityDbContext(DbContextOptions<TicketManagementDatabaseIdentityDbContext> options) : base(options)
-    {
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

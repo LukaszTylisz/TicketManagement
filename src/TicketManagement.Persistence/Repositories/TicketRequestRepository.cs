@@ -5,12 +5,9 @@ using TicketManagement.Persistence.DatabaseContext;
 
 namespace TicketManagement.Persistence.Repositories;
 
-public class TicketRequestRepository : GenericRepository<TicketRequest>, ITicketRequestRepository
+public class TicketRequestRepository(TicketManagementDatabaseContext context)
+    : GenericRepository<TicketRequest>(context), ITicketRequestRepository
 {
-    public TicketRequestRepository(TicketManagementDatabaseContext context) : base(context)
-    {
-    }
-
     public async Task<TicketRequest> GetTicketWithDetails(int id)
     {
         var ticketRequests = await _context.TicketRequests

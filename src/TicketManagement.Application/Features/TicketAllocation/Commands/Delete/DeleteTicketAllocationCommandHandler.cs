@@ -5,25 +5,21 @@ using TicketManagement.Application.Exceptions;
 
 namespace TicketManagement.Application.Features.TicketAllocation.Commands.Delete
 {
-    public class DeleteTicketAllocationCommandHandler : IRequestHandler<DeleteTicketAllocationCommand>
+    public class DeleteTicketAllocationCommandHandler(
+        IMapper mapper,
+        ITicketAllocationRepository ticketAllocationRepository)
+        : IRequestHandler<DeleteTicketAllocationCommand>
     {
-        private readonly ITicketAllocationRepository _ticketAllocationRepository;
-        private readonly IMapper _mapper;
-
-        public DeleteTicketAllocationCommandHandler(IMapper mapper, ITicketAllocationRepository ticketAllocationRepository)
-        {
-            _mapper = mapper;
-            _ticketAllocationRepository = ticketAllocationRepository;
-        }
+        private readonly IMapper _mapper = mapper;
 
         public async Task Handle(DeleteTicketAllocationCommand request, CancellationToken cancellationToken)
         {
-            var ticketAllocation = await _ticketAllocationRepository.GetByIdAsync(request.Id);
+            var ticketAllocation = await ticketAllocationRepository.GetByIdAsync(request.Id);
 
             if (ticketAllocation == null)
                 throw new NotFoundException(nameof(TicketAllocation), request.Id);
 
-            await _ticketAllocationRepository.DeleteAsync(ticketAllocation);
+            await ticketAllocationRepository.DeleteAsync(ticketAllocation);
         }
     }
 }

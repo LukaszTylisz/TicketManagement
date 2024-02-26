@@ -5,14 +5,10 @@ using TicketManagement.Persistence.DatabaseContext;
 
 namespace TicketManagement.Persistence.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T>(TicketManagementDatabaseContext context) : IGenericRepository<T>
+    where T : BaseEntity
 {
-    protected readonly TicketManagementDatabaseContext _context;
-
-    public GenericRepository(TicketManagementDatabaseContext context)
-    {
-        this._context = context;
-    }
+    protected readonly TicketManagementDatabaseContext _context = context;
 
     public async Task CreateAsync(T entity)
     {

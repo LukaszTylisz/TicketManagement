@@ -6,25 +6,19 @@ namespace TicketManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(IAuthService authenticationService) : ControllerBase
     {
-        private readonly IAuthService _authenticationService;
-
-        public AuthController(IAuthService authenticationService)
-        {
-            this._authenticationService = authenticationService;
-        }
 
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
         {
-            return Ok(await _authenticationService.Login(request));
+            return Ok(await authenticationService.Login(request));
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<RegistrationResponse>> Register(RegistrationRequest request)
         {
-            return Ok(await _authenticationService.Register(request));
+            return Ok(await authenticationService.Register(request));
         }
     }
 }

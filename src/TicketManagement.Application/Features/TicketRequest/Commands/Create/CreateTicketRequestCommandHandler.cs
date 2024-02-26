@@ -9,40 +9,27 @@ using TicketManagement.Application.Models.Email;
 
 namespace TicketManagement.Application.Features.TicketRequest.Commands.Create;
 
-public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketRequestCommand, Unit>
+public class CreateTicketRequestCommandHandler(
+    IMapper mapper,
+    ITicketTypeRepository ticketTypeRepository,
+    ITicketRequestRepository ticketRequestRepository,
+    ITicketAllocationRepository ticketAllocationRepository,
+    IEmailSender emailSender,
+    IUserService userService,
+    IAppLogger<CreateTicketRequestCommandHandler> appLoger)
+    : IRequestHandler<CreateTicketRequestCommand, Unit>
 {
-    private readonly IMapper _mapper;
-    private readonly ITicketTypeRepository _ticketTypeRepository;
-    private readonly ITicketRequestRepository _ticketRequestRepository;
-    private readonly ITicketAllocationRepository _ticketAllocationRepository;
-    private readonly IEmailSender _emailSender;
-    private readonly IUserService _userService;
-    private readonly IAppLogger<CreateTicketRequestCommandHandler> _appLoger;
-
-    public CreateTicketRequestCommandHandler(IMapper mapper, ITicketTypeRepository ticketTypeRepository,
-        ITicketRequestRepository ticketRequestRepository, ITicketAllocationRepository ticketAllocationRepository,
-        IEmailSender emailSender, IUserService userService, IAppLogger<CreateTicketRequestCommandHandler> appLoger)
-    {
-        _mapper = mapper;
-        _ticketTypeRepository = ticketTypeRepository;
-        _ticketRequestRepository = ticketRequestRepository;
-        _ticketAllocationRepository = ticketAllocationRepository;
-        _emailSender = emailSender;
-        _userService = userService;
-        _appLoger = appLoger;
-    }
-
     public async Task<Unit> Handle(CreateTicketRequestCommand request, CancellationToken cancellationToken)
     {
-        var validator = new CreateTicketRequestCommandValidator(_ticketTypeRepository);
+        var validator = new CreateTicketRequestCommandValidator(ticketTypeRepository);
         var validationResult = await validator.ValidateAsync(request);
 
         if (validationResult.Errors.Any())
             throw new BadRequestException("Invalid ticket Request", validationResult);
 
-        var clientId = _userService.UserId;
+        var clientId = userService.UserId;
 
-        var allocation = await _ticketAllocationRepository.GetUserAllocations(clientId, request.TicketTypeId);
+        var allocation = await ticketAllocationRepository.GetUserAllocations(clientId, request.TicketTypeId);
 
         if (allocation is null)
         {
@@ -59,10 +46,10 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
             throw new BadRequestException("Invalid Ticket Request", validationResult);
         }
 
-        var ticketRequest = _mapper.Map<Domain.TicketRequest>(request);
+        var ticketRequest = mapper.Map<Domain.TicketRequest>(request);
         ticketRequest.RequestingClientId = clientId;
         ticketRequest.DateRequested = DateTime.Now;
-        await _ticketRequestRepository.CreateAsync(ticketRequest);
+        await ticketRequestRepository.CreateAsync(ticketRequest);
 
         try
         {
@@ -74,11 +61,11 @@ public class CreateTicketRequestCommandHandler : IRequestHandler<CreateTicketReq
                 Subject = "Ticket Request Submitted"
             };
 
-            await _emailSender.SendEmail(email);
+            await emailSender.SendEmail(email);
         }
         catch (Exception ex)
         {
-            _appLoger.LogWarning(ex.Message);
+            appLoger.LogWarning(ex.Message);
         }
 
         return Unit.Value;

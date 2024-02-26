@@ -14,28 +14,20 @@ namespace TicketManagement.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class TicketRequestController : ControllerBase
+public class TicketRequestController(IMediator mediator) : ControllerBase
 
 {
-    private readonly IMediator _mediator;
-
-    public TicketRequestController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    
     [HttpGet]
     public async Task<ActionResult<List<TicketRequestListDto>>> Get(bool isLoggedInUser = false)
     {
-        var ticketRequests = await _mediator.Send(new GetTicketRequestListQuery());
+        var ticketRequests = await mediator.Send(new GetTicketRequestListQuery());
         return Ok(ticketRequests);
     }
     
     [HttpGet("{id}")]
     public async Task<ActionResult<TicketRequestDetailsDto>> Get(int id)
     {
-        var ticketRequest = await _mediator.Send(new GetTicketRequestDetailQuery { Id = id });
+        var ticketRequest = await mediator.Send(new GetTicketRequestDetailQuery { Id = id });
         return Ok(ticketRequest);
     }
     
@@ -45,7 +37,7 @@ public class TicketRequestController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Post(CreateTicketRequestCommand ticketRequest)
     {
-        var response = await _mediator.Send(ticketRequest);
+        var response = await mediator.Send(ticketRequest);
         return CreatedAtAction(nameof(Get), new { id = response });
     }
     
@@ -56,7 +48,7 @@ public class TicketRequestController : ControllerBase
     [ProducesDefaultResponseType]
     public async Task<ActionResult> Put(UpdateTicketRequestCommand ticketRequest)
     {
-        await _mediator.Send(ticketRequest);
+        await mediator.Send(ticketRequest);
         return NoContent();
     }
     
@@ -68,7 +60,7 @@ public class TicketRequestController : ControllerBase
     [ProducesDefaultResponseType]
     public async Task<ActionResult> CancelRequest(CancelTicketRequestCommand cancelTicketRequest)
     {
-        await _mediator.Send(cancelTicketRequest);
+        await mediator.Send(cancelTicketRequest);
         return NoContent();
     }
     
@@ -80,7 +72,7 @@ public class TicketRequestController : ControllerBase
     [ProducesDefaultResponseType]
     public async Task<ActionResult> UpdateApproval(ChangeTicketRequestResolvedCommand updateResolvedRequest)
     {
-        await _mediator.Send(updateResolvedRequest);
+        await mediator.Send(updateResolvedRequest);
         return NoContent();
     }
     
@@ -91,7 +83,7 @@ public class TicketRequestController : ControllerBase
     public async Task<ActionResult> Delete(int id)
     {
         var command = new DeleteTicketRequestCommand() { Id = id };
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
 }

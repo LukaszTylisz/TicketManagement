@@ -14,51 +14,50 @@ builder.Host.UseSerilog((context, loggerConfig) => loggerConfig
     .WriteTo.Console()
     .ReadFrom.Configuration(context.Configuration));
 
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddPersistenceServices(builder.Configuration);
-builder.Services.AddIdentityServices(builder.Configuration);
-
-builder.Services.AddControllers();
+builder.Services
+    .AddApplicationServices()
+    .AddInfrastructureServices(builder.Configuration)
+    .AddPersistenceServices(builder.Configuration)
+    .AddIdentityServices(builder.Configuration)
+    .AddControllers();
 
 builder.Services.AddCors(options =>
-{
-    options.AddPolicy("all", builder => builder.AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod());
-});
-
-builder.Services.AddHttpContextAccessor();
+    {
+        options.AddPolicy("all", builder => builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+    })
+    .AddHttpContextAccessor();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(option =>
-{
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Ticket Management API", Version = "v1" });
-    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+builder.Services.AddEndpointsApiExplorer()
+    .AddSwaggerGen(option =>
     {
-        In = ParameterLocation.Header,
-        Description = "Please enter a valid token",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
-        Scheme = "Bearer"
-    });
-    option.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
+        option.SwaggerDoc("v1", new OpenApiInfo { Title = "Ticket Management API", Version = "v1" });
+        option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
-            new OpenApiSecurityScheme
+            In = ParameterLocation.Header,
+            Description = "Please enter a valid token",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "Bearer"
+        });
+        option.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
             {
-                Reference = new OpenApiReference
+                new OpenApiSecurityScheme
                 {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
-            },
-            new string[]{}
-        }
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                new string[] { }
+            }
+        });
     });
-});
 
 var app = builder.Build();
 
@@ -71,14 +70,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseSerilogRequestLogging();
-
-app.UseHttpsRedirection();
-
-app.UseCors("all");
-
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseSerilogRequestLogging()
+    .UseHttpsRedirection()
+    .UseCors("all")
+    .UseAuthentication()
+    .UseAuthorization();
 
 app.MapControllers();
 

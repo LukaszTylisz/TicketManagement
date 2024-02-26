@@ -6,14 +6,10 @@ using TicketManagement.Application.Models.Email;
 
 namespace TicketManagement.Infrastructure.EmailService;
 
-public class EmailSender : IEmailSender
+public class EmailSender(IOptions<EmailSettings> emailSettings) : IEmailSender
 {
-    public EmailSettings _emailSettings { get; }
+    public EmailSettings _emailSettings { get; } = emailSettings.Value;
 
-    public EmailSender(IOptions<EmailSettings> emailSettings)
-    {
-        _emailSettings = emailSettings.Value ;
-    }
     public async Task<bool> SendEmail(EmailMessage email)
     {
         var client = new SendGridClient(_emailSettings.ApiKey);

@@ -12,26 +12,19 @@ namespace TicketManagement.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class TicketTypesController : ControllerBase
+public class TicketTypesController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public TicketTypesController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
     [HttpGet]
     public async Task<ActionResult<List<TicketTypeDto>>> Get()
     {
-        var ticketTypes = await _mediator.Send(new GetTicketTypeQuery());
+        var ticketTypes = await mediator.Send(new GetTicketTypeQuery());
         return Ok(ticketTypes);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<TicketTypeDetailsDto>> Get(int id)
     {
-        var ticketTypes = await _mediator.Send(new GetTicketTypeDetailsQuery(id));
+        var ticketTypes = await mediator.Send(new GetTicketTypeDetailsQuery(id));
         return Ok(ticketTypes);
     }
 
@@ -41,7 +34,7 @@ public class TicketTypesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Post(CreateTicketTypeCommand ticketTypeCommand)
     {
-        var response = await _mediator.Send(ticketTypeCommand);
+        var response = await mediator.Send(ticketTypeCommand);
         return CreatedAtAction(nameof(Get), new { id = response });
     }
     
@@ -52,7 +45,7 @@ public class TicketTypesController : ControllerBase
     [ProducesDefaultResponseType]
     public async Task<ActionResult> Put (UpdateTicketTypeCommand ticketTypeCommand)
     {
-        await _mediator.Send(ticketTypeCommand);
+        await mediator.Send(ticketTypeCommand);
         return NoContent();
     }
     
@@ -63,7 +56,7 @@ public class TicketTypesController : ControllerBase
     public async Task<ActionResult> Delete (int id)
     {
         var command = new DeleteTicketTypeCommand() { Id = id };
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
     
