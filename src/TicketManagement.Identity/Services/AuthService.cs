@@ -11,28 +11,22 @@ using TicketManagement.Identity.Models;
 
 namespace TicketManagement.Identity.Services;
 
-public class AuthService : IAuthService
+public class AuthService(
+    UserManager<ApplicationUser> userManager,
+    IOptions<JwtSettings> jwtSettings,
+    SignInManager<ApplicationUser> signInManager)
+    : IAuthService
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly JwtSettings _jwtSettings;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-
-    public AuthService(UserManager<ApplicationUser> userManager, IOptions<JwtSettings> jwtSettings,
-        SignInManager<ApplicationUser> signInManager)
-    {
-        _userManager = userManager;
-        _jwtSettings = jwtSettings.Value;
-        _signInManager = signInManager;
-    }
+    private readonly JwtSettings _jwtSettings = jwtSettings.Value;
 
     public async Task<AuthResponse> Login(AuthRequest request)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
+        var user = await userManager.FindByEmailAsync(request.Email);
 
         if (user == null)
             throw new NotFoundException($"User with {request.Email} not found.", request.Email);
 
-        var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+        var result = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
         if (result.Succeeded == false)
             throw new BadRequestException($"Credentials for '{request.Email} aren't valid'.");
@@ -62,11 +56,11 @@ public class AuthService : IAuthService
             EmailConfirmed = true
         };
 
-        var result = await _userManager.CreateAsync(user, request.Password);
+        var result = await userManager.CreateAsync(user, request.Password);
 
         if (result.Succeeded)
         {
-            await _userManager.AddToRoleAsync(user, "Client");
+            await userManager.AddToRoleAsync(user, "Client");
             return new RegistrationResponse() { UserId = user.Id };
         }
         else
@@ -83,8 +77,8 @@ public class AuthService : IAuthService
 
     private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
     {
-        var userCaims = await _userManager.GetClaimsAsync(user);
-        var roles = await _userManager.GetRolesAsync(user);
+        var userCaims = await userManager.GetClaimsAsync(user);
+        var roles = await userManager.GetRolesAsync(user);
 
         var roleClaims = roles.Select(q => new Claim(ClaimTypes.Role, q)).ToList();
 

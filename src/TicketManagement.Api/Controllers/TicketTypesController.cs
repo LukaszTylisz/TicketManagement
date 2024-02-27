@@ -37,27 +37,26 @@ public class TicketTypesController(IMediator mediator) : ControllerBase
         var response = await mediator.Send(ticketTypeCommand);
         return CreatedAtAction(nameof(Get), new { id = response });
     }
-    
+
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(400)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> Put (UpdateTicketTypeCommand ticketTypeCommand)
+    public async Task<ActionResult> Put(UpdateTicketTypeCommand ticketTypeCommand)
     {
         await mediator.Send(ticketTypeCommand);
         return NoContent();
     }
-    
+
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> Delete (int id)
+    public async Task<ActionResult> Delete(int id)
     {
         var command = new DeleteTicketTypeCommand() { Id = id };
         await mediator.Send(command);
         return NoContent();
     }
-    
 }

@@ -23,14 +23,14 @@ public class TicketRequestController(IMediator mediator) : ControllerBase
         var ticketRequests = await mediator.Send(new GetTicketRequestListQuery());
         return Ok(ticketRequests);
     }
-    
+
     [HttpGet("{id}")]
     public async Task<ActionResult<TicketRequestDetailsDto>> Get(int id)
     {
         var ticketRequest = await mediator.Send(new GetTicketRequestDetailQuery { Id = id });
         return Ok(ticketRequest);
     }
-    
+
     [HttpPost]
     [ProducesResponseType(201)]
     [ProducesResponseType(400)]
@@ -40,7 +40,7 @@ public class TicketRequestController(IMediator mediator) : ControllerBase
         var response = await mediator.Send(ticketRequest);
         return CreatedAtAction(nameof(Get), new { id = response });
     }
-    
+
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(400)]
@@ -51,7 +51,7 @@ public class TicketRequestController(IMediator mediator) : ControllerBase
         await mediator.Send(ticketRequest);
         return NoContent();
     }
-    
+
     [HttpPut]
     [Route("CancelRequest")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -63,7 +63,7 @@ public class TicketRequestController(IMediator mediator) : ControllerBase
         await mediator.Send(cancelTicketRequest);
         return NoContent();
     }
-    
+
     [HttpPut]
     [Route("UpdateApproval")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -75,7 +75,7 @@ public class TicketRequestController(IMediator mediator) : ControllerBase
         await mediator.Send(updateResolvedRequest);
         return NoContent();
     }
-    
+
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

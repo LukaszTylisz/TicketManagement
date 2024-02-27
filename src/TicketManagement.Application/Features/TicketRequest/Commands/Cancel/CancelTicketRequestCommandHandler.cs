@@ -37,15 +37,12 @@ public class CancelTicketRequestCommandHandler(
 
         try
         {
-            var email = new EmailMessage
+            await emailSender.SendEmail(new EmailMessage
             {
                 To = string.Empty,
-                Body =
-                    $"Your ticket request for {ticketRequest.StartDate:D} to {ticketRequest.EndDate:D} has been cancelled successfully.",
+                Body = $"Your ticket request for {ticketRequest.StartDate:D} to {ticketRequest.EndDate:D} has been cancelled successfully.",
                 Subject = "Ticket Request Cancelled"
-            };
-
-            await emailSender.SendEmail(email);
+            });
         }
         catch (Exception ex)
         {

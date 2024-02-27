@@ -53,15 +53,13 @@ public class CreateTicketRequestCommandHandler(
 
         try
         {
-            var email = new EmailMessage
+            await emailSender.SendEmail(new EmailMessage
             {
                 To = string.Empty,
                 Body = $"Your ticket request for {request.StartDate:D} to {request.EndDate:D} " +
                        $"has been submitted successfully.",
                 Subject = "Ticket Request Submitted"
-            };
-
-            await emailSender.SendEmail(email);
+            });
         }
         catch (Exception ex)
         {

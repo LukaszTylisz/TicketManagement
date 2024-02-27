@@ -34,16 +34,13 @@ public class UpdateTicketRequestCommandHandler(
         
         try
         {
-           
-            var email = new EmailMessage
+            await emailSender.SendEmail(new EmailMessage
             {
                 To = string.Empty,
                 Body = $"Your ticket request for {request.StartDate:D} to {request.EndDate:D} " +
                        $"has been updated successfully.",
                 Subject = "Ticket Request Updated"
-            };
-
-            await emailSender.SendEmail(email);
+            });
         }
         catch (Exception ex)
         {

@@ -7,25 +7,17 @@ using TicketManagement.Identity.Models;
 
 namespace TicketManagement.Identity.Services;
 
-public class UserService : IUserService
+public class UserService(UserManager<ApplicationUser> userManager, IHttpContextAccessor contextAccessor)
+    : IUserService
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly IHttpContextAccessor _contextAccessor;
-
-    public UserService(UserManager<ApplicationUser> userManager, IHttpContextAccessor contextAccessor)
-    {
-        _userManager = userManager;
-        _contextAccessor = contextAccessor;
-    }
-
     public string UserId
     {
-        get => _contextAccessor.HttpContext?.User?.FindFirstValue("uid");
+        get => contextAccessor.HttpContext?.User?.FindFirstValue("uid");
     }
 
     public async Task<Clients> GetClient(string userId)
     {
-        var client = await _userManager.FindByIdAsync(userId);
+        var client = await userManager.FindByIdAsync(userId);
         return new Clients
         {
             Email = client.Email,
@@ -37,7 +29,7 @@ public class UserService : IUserService
 
     public async Task<List<Clients>> GetClients()
     {
-        var clients = await _userManager.GetUsersInRoleAsync("Client");
+        var clients = await userManager.GetUsersInRoleAsync("Client");
         return clients.Select(q => new Clients
         {
             Id = q.Id,

@@ -8,7 +8,6 @@ namespace TicketManagement.Controllers
     [ApiController]
     public class AuthController(IAuthService authenticationService) : ControllerBase
     {
-
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
         {

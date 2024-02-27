@@ -43,14 +43,12 @@ public class ChangeTicketRequestResolvedHandler(
 
         try
         {
-            var email = new EmailMessage
+            await emailSender.SendEmail(new EmailMessage
             {
                 To = string.Empty,
                 Body = $"The resolved status for your ticket request for {ticketRequest.StartDate:D} to {ticketRequest.EndDate:D} has been updated.",
                 Subject = "Ticket Request Approval Status Updated"
-            };
-
-            await emailSender.SendEmail(email);
+            });
         }
         catch (Exception ex)
         {
