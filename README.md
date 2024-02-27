@@ -72,7 +72,9 @@ Have a solid foundation for future projects
 - Swagger UI
 - Blazor WebAssembly
 - Sendgrid Email Service
+- Feature In-Memory Database for Integration Tests
+- Moq
+- Xunit
 - //Feature Pagination
-- //Feature In-Memory Database for Integration Tests
 
 
